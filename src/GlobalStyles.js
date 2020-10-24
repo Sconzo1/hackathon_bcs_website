@@ -110,6 +110,10 @@ const styles = theme => ({
             fontFamily: "'Comfortaa'",
             fontWeight: "700"
         },
+        ".title-montserrat": {
+            fontFamily: "'Montserrat'",
+            fontWeight: "700",
+        },
     }
 });
 

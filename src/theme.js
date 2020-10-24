@@ -83,6 +83,11 @@ const theme = createMuiTheme({
         borderWidth: borderWidth
     },
     overrides: {
+        MuiTypography: {
+            h6: {
+                fontFamily: "'Montserrat'",
+            }
+        },
         MuiExpansionPanel: {
             root: {
                 position: "static"

@@ -36,18 +36,18 @@ const Home = ({selectHome, refFooter, width}) => {
     return (
         <Fragment>
             <div ref={refTop}/>
-            <Heads refFooter={refFooter}/>
+            {/*<Heads refFooter={refFooter}/>*/}
             <WhoWeAre/>
             <WhatWeDo/>
-            <OurEfficiency/>
-            <Features/>
-            <Testimonials/>
-            <Pricing/>
-            <ScrollTo anchorRef={refTop} stopThreshold={getStopThreshold()}>
-                <Fab color="secondary" size="medium" aria-label="Scroll to top" style={{zIndex: 2}}>
-                    <KeyboardArrowUpIcon/>
-                </Fab>
-            </ScrollTo>
+            {/*<OurEfficiency/>*/}
+            {/*<Features/>*/}
+            {/*<Testimonials/>*/}
+            {/*<Pricing/>*/}
+            {/*<ScrollTo anchorRef={refTop} stopThreshold={getStopThreshold()}>*/}
+            {/*    <Fab color="secondary" size="medium" aria-label="Scroll to top" style={{zIndex: 2}}>*/}
+            {/*        <KeyboardArrowUpIcon/>*/}
+            {/*    </Fab>*/}
+            {/*</ScrollTo>*/}
         </Fragment>
     );
 }

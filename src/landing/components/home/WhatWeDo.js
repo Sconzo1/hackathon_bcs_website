@@ -3,17 +3,16 @@ import PropTypes from "prop-types";
 import {Box, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
 import Image from "./images/whatWeDo.jpg";
-import BuildIcon from "@material-ui/icons/Build";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import MessageIcon from "@material-ui/icons/Message";
 import {alphaHex} from "../../../shared/functions/alphaHex";
+import GradientTypography from "../../../shared/components/GradientTypography";
+import Card from "@material-ui/core/Card";
 
 
 const styles = (theme) => ({
-    image: {
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
+    imageContainer: {
+    },
+        image: {
+            width: "100%",
     },
     rightWrapper: {
         paddingBottom: theme.spacing(12),
@@ -56,27 +55,6 @@ const styles = (theme) => ({
 
 const WhatWeDo = ({classes, width}) => {
 
-    const pros = [
-        {
-            title: "Дело #1",
-            text:
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-            icon: <BuildIcon/>
-        },
-        {
-            title: "Дело #2",
-            text:
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-            icon: <CalendarTodayIcon/>
-        },
-        {
-            title: "Дело #3",
-            text:
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-            icon: <MessageIcon/>
-        },
-    ];
-
     return (
         <div style={{backgroundColor: "#FFFFFF"}}>
             <Box display="flex" justifyContent="space-between"
@@ -84,7 +62,19 @@ const WhatWeDo = ({classes, width}) => {
                 <Grid container spacing={6}>
                     <Hidden smDown>
                         <Grid item md={6}
-                              data-aos="fade-right">
+                              data-aos="fade-right"
+                              className={classes.imageContainer}>
+                            <Card variant="outlined" style={{
+                                float: "left",
+                                position: "absolute",
+                                zIndex: 10,
+                                backgroundColor: "#92AD40",
+                                padding: 5,
+                                color: "#FFFFFF",
+                                fontWeight: "bold",
+                            }}>
+                                adsasdasda
+                            </Card>
                             <img className={classes.image} src={Image} alt=""/>
                         </Grid>
                     </Hidden>
@@ -102,39 +92,17 @@ const WhatWeDo = ({classes, width}) => {
                                 justify="space-between"
                                 alignItems="flex-start"
                             >
-                                <Typography paragraph variant="h3" className="title-comfortaa">
-                                    Что мы делаем
+                                <GradientTypography variant="h3">
+                                    Инвестиции как смысл жизни
+                                </GradientTypography>
+                                <Typography variant="h6"
+                                            color="textSecondary"
+                                            style={{fontWeight: 400}}>
+                                    Инвестиции - это способ обеспечить себе стабильное будущее. Правильное
+                                    инвестирование позволяет создавать эффективные накопления в догосрочной
+                                    перспективе
                                 </Typography>
-                                <Typography variant="h6">
-                                    Мы разрабатываем удобные вещи для великих дел
-                                </Typography>
-                                <div className={classNames(classes.wrapperIcons, "container-fluid")}
-                                     style={{paddingLeft: 0, paddingRight: 0}}>
-                                    {pros.map(({title, text, icon}, i) => (
-                                        <Grid item
-                                              container
-                                              direction="row"
-                                              data-aos="zoom-in-up"
-                                              justify="flex-start"
-                                              alignItems="center"
-                                              spacing={8}
-                                              key={i}>
-                                            <Grid item xs={1} md={1}>
-                                                <Box className={classes.iconWrapper}>
-                                                    {icon}
-                                                </Box>
-                                            </Grid>
-                                            <Grid item xs={9} md={10}>
-                                                <Typography variant="h6" color="textPrimary">
-                                                    {title}
-                                                </Typography>
-                                                <Typography variant="body1" color="textSecondary">
-                                                    {text}
-                                                </Typography>
-                                            </Grid>
-                                        </Grid>
-                                    ))}
-                                </div>
+
                             </Grid>
                         </div>
                     </Grid>

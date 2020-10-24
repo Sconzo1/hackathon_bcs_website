@@ -44,7 +44,7 @@ const WhoWeAre = ({classes, width}) => {
                 className={classes.waveBorder}
                 animationNegativeDelay={8}
             />
-            <div style={{backgroundColor: "#f5f7fd", marginTop: "-4vw"}}>
+            <div style={{backgroundColor: "#fff", marginTop: "-4vw"}}>
                 <div className="lg-p-top lg-p-bottom">
                     <Box display="flex" justifyContent="center">
                         <div className={classNames(classes.containerFix, "container")}>

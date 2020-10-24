@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import {Box, Grid, Hidden, isWidthUp, Typography,  withStyles, makeStyles } from "@material-ui/core";
+import GradientTypography from "../../../../../shared/components/GradientTypography";
+
 
 const ColoredTypography = withStyles({
     root: {
@@ -9,10 +11,10 @@ const ColoredTypography = withStyles({
   })(Typography);
 
 
-const labelValue = (label, value) => {
+const labelValue = (label, value, xs) => {
     return(
-        <Grid xs={4}>
-            <ColoredTypography  gutterBottom>{label}</ColoredTypography>
+        <Grid xs={xs} style = {{marginTop: "22px"}} >
+            <ColoredTypography   gutterBottom>{label}</ColoredTypography>
             
             <ColoredTypography component="div">
                 <Box fontWeight="fontWeightBold" fontSize={21}>
@@ -20,14 +22,14 @@ const labelValue = (label, value) => {
                 </Box>
             </ColoredTypography>
 
-            <div style={{marginBottom:"24px"}}/>
+            <div/>
         </Grid>
     )
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 800 + theme.spacing(3) * 2,
+    width: 700 + theme.spacing(3) * 2,
     margin: "20px"
   },
   margin: {
@@ -37,28 +39,28 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function Evaluation() {
+function Evaluation({currency, investmentSum, monthlyPayment, period}) {
     const classes = useStyles();
 
     
     return (
-        <Grid item justify="center" spacing={5}>
+        <Grid item spacing={4}>
             <div className={classes.root}>
-                <Typography variant="h3" color = "secondary" gutterBottom>
-                <Box fontWeight="fontWeightBold" >
+                <GradientTypography variant="h4" color = "secondary" gutterBottom>
                     Накоплю к октябрю 2025 года
-                </Box> 
-            </Typography>
-            </div>
-        
-        <Grid container spacing={2}>
-            {labelValue("Ожидаемая стоимость портфеля", "46 770 $")}
-            {labelValue("Ожидаемый доход с учетом комиссии", "9 269 $")}
-            {labelValue("Доход с ИИС", "+3 400 $")}
-            {labelValue("Ожидаемая доходность", "7,0 %")}
-            {labelValue("Историческая доходность", "11,18 %")}
+            </GradientTypography>
+           
+        <div>
+        <Grid container spacing={4}>
+            {labelValue("Ожидаемая стоимость портфеля", `${(investmentSum * Math.pow(1 + 0.07/12, period)).toFixed(2)} ${currency}`, 5)}
+            {labelValue("Ожидаемый доход с учетом комиссии", `${(investmentSum * Math.pow(1 + 0.07/12, period) - investmentSum).toFixed(2)} ${currency}`, 5)}
+            {labelValue("Доход с ИИС", `+ ${500} ${currency}`, 2)}
+            {labelValue("Ожидаемая доходность", `${((investmentSum * Math.pow(1 + 0.07/12, period) - investmentSum)/investmentSum*100).toFixed(2)} %`, 5)}
+            {labelValue("Историческая доходность", `${60} %`, 5)}   
+            
         </Grid>
-        
+        </div>
+        </div>
         </Grid>
             
         

@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 
+
 const ColoredTypography = withStyles({
     root: {
       color: "#4a4a4a"
@@ -100,12 +101,7 @@ const BootstrapButton = withStyles({
   })(Button);
 
 
-function SingleSliderDuration ({name, min, max, step, currency}) {
-    const [initialSum, setinitialSum] = useState(min);
-
-    const onInitialSumChanged = (e, val) => {
-        setinitialSum(val)
-    }
+function SingleSliderDuration ({name, min, max, step, currency, value, onChanged}) {  
     
 
     return(
@@ -114,33 +110,35 @@ function SingleSliderDuration ({name, min, max, step, currency}) {
 
             <ColoredTypography component="div">
                 <Box fontWeight="fontWeightBold" fontSize={21}>
-                    {initialSum} {currency}
+                    {value} {currency}
                 </Box>
             </ColoredTypography>
 
             <AirbnbSlider
                 ThumbComponent={AirbnbThumbComponent}
                 valueLabelDisplay = "auto"
-                value={initialSum}
-                onChange = {onInitialSumChanged}
+                value={value}
+                onChange = {(e, val) => {
+                  onChanged(val)
+              }}
                 step = {step}
                 min = {min}
                 max = {max}
             />
             <div>
-                <BootstrapButton onClick={ () => {onInitialSumChanged(null, 12)}}>
+                <BootstrapButton onClick  ={ () => {onChanged(12)}}>
                     1 год
                 </BootstrapButton>
-                <BootstrapButton onClick={ () => {onInitialSumChanged(null, 24)}}>
+                <BootstrapButton onClick={ () => {onChanged(24)}}>
                     2 года
                 </BootstrapButton >
-                <BootstrapButton onClick={ () => {onInitialSumChanged(null, 36)}}>
+                <BootstrapButton onClick={ () => {onChanged(36)}}>
                     3 года
                 </BootstrapButton>
-                <BootstrapButton onClick={ () => {onInitialSumChanged(null, 48)}}>
+                <BootstrapButton onClick={ () => {onChanged(48)}}>
                     4 года
                 </BootstrapButton>
-                <BootstrapButton onClick={ () => {onInitialSumChanged(null, 60)}}>
+                <BootstrapButton onClick={ () => {onChanged(60)}}>
                     5 лет
                 </BootstrapButton>
             </div>

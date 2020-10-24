@@ -2,16 +2,71 @@ import React, { useState, useEffect } from 'react';
 import CalcSlider from './Sliders/CalcSlider'
 import Evaluation from './Predictions/Evaluation'
 
-import {Box, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
+import {Box, Grid} from "@material-ui/core";
 
 
 function Calculator() {
+    const [currency, setCurrency] = useState("₽")
+    const [investmentSum, setInvestmentSum] = useState(10000)
+    const [monthlyPayment, setMonthlyPayment] = useState(100)
+    const [period, setPeriod] = useState(1)
+    const [evaluatedProfileCost, setEvaluatedProfileCost] = useState(10058.33)
+    const [evaluatedIncome, setEvaluatedIncome] = useState(58.33)
+    const [evaluatedIISIncome, setEvaluatedIISIncome] = useState(0)
+    const [evaluatedProfitability, setEvaluatedProfitability] = useState(0.58)
+    const [historicalProfitability, setHistoricalProfitability] = useState(7)
+
+    const onCurrencyChanged = (cur) => {
+      setCurrency(cur)
+      //calculate()
+    }
+    const onInvestmentSumChanged = (sum) => {
+      setInvestmentSum(sum)
+      //calculate()
+    }
+    const onMonthlyPaymentChanged = (payment) => {
+      setMonthlyPayment(payment)
+      //calculate()
+    }
+    const onPeriodChanged = (period) => {
+      setPeriod(period)
+      //calculate()
+    }
+
+    function calculate() {
+      let rate = 0.07
+
+      let futureSum = investmentSum * Math.pow(1 + rate/12, period)
+      setEvaluatedProfileCost(futureSum.toFixed(2))
+      let delta = futureSum - investmentSum
+      setEvaluatedIncome(delta.toFixed(2))
+      let persentage = delta/investmentSum * 100
+      setEvaluatedProfitability(persentage.toFixed(2))
+      
+
+    }
+  
+
+
     return (
       <div>
         <Grid container justify="center" >
-          
-            <CalcSlider />          
-            <Evaluation />
+            <CalcSlider 
+              currency = {currency}
+              investmentSum = {investmentSum}
+              monthlyPayment = {monthlyPayment}
+              period = {period}
+              onCurrencyChanged={onCurrencyChanged}
+              onInvestmentSumChanged={onInvestmentSumChanged}
+              onMonthlyPaymentChanged={onMonthlyPaymentChanged} 
+              onPeriodChanged={onPeriodChanged}
+            />          
+            <Evaluation 
+              currency = {currency}
+              investmentSum = {investmentSum}
+              monthlyPayment = {monthlyPayment}
+              period = {period}              
+            />
 
   
         </Grid>

@@ -62,7 +62,7 @@ function AirbnbThumbComponent(props) {
 }
 
 
-function SingleSlider ({name, min, max, step, currency}) {
+function SingleSlider ({name, min, max, step, currency, value, onChanged}) {
     const [initialSum, setinitialSum] = useState(min);
 
     const onInitialSumChanged = (e, val) => {
@@ -76,7 +76,7 @@ function SingleSlider ({name, min, max, step, currency}) {
 
             <ColoredTypography component="div">
                 <Box fontWeight="fontWeightBold" fontSize={21}>
-                    {initialSum} {currency}
+                    {value} {currency}
                 </Box>
             </ColoredTypography>
 
@@ -84,7 +84,7 @@ function SingleSlider ({name, min, max, step, currency}) {
                 ThumbComponent={AirbnbThumbComponent}
                 valueLabelDisplay = "auto"
                 defaultValue={min}
-                onChange = {onInitialSumChanged}
+                onChange = {(e, val) => {onChanged(val)}}
                 step = {step}
                 min = {min}
                 max = {max}

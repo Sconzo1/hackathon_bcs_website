@@ -10,9 +10,7 @@ function Calculator() {
       <div>
         <Grid container justify="center" >
           
-            <CalcSlider />
-
-           
+            <CalcSlider />          
             <Evaluation />
 
   

@@ -23,7 +23,7 @@ function CalcSlider() {
 
     const [currency, setCurrency] = useState("₽");
     
-    const onCurrencyChanged = (cur) =>{
+    const onCurrencyChanged = (cur) => {
         setCurrency(cur)
     }
 

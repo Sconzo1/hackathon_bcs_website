@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
 import SingleSlider from './SingleSlider'
 import Currency from './Currency'
 import SingleSliderDuration from './SingleSliderDuration'
+import {Box, Grid, Hidden, isWidthUp, Typography,  withStyles, makeStyles, withWidth} from "@material-ui/core";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +28,14 @@ function CalcSlider() {
     }
 
     return (
+      <Grid item>
         <div className={classes.root}>
+          <Typography variant="h3" color = "secondary" gutterBottom>
+            <Box fontWeight="fontWeightBold" >
+                Хочу вложить
+            </Box> 
+          </Typography>
+
             <Currency onCurrencyChanged={onCurrencyChanged}/>
             <div className={classes.margin} />
             <SingleSlider name="Первоначальная сумма" min={10000} max={10000000} step={5000} currency = {currency}/> 
@@ -38,6 +46,7 @@ function CalcSlider() {
 
             
         </div>
+        </Grid>
   );
 }
 

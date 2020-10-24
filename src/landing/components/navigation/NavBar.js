@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import {AppBar, Button, Hidden, IconButton, Toolbar, Typography, withStyles} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import HowToRegIcon from "@material-ui/icons/HowToReg";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
@@ -20,16 +19,35 @@ const styles = theme => ({
         justifyContent: "space-between"
     },
     menuButtonText: {
-        fontSize: theme.typography.body1.fontSize,
-        fontWeight: theme.typography.h6.fontWeight,
         letterSpacing: 1,
+        fontSize: '16px',
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 500
     },
     brandText: {
-        fontFamily: "'Baloo Bhaijaan', cursive",
-        fontWeight: 400
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 700
     },
     noDecoration: {
-        textDecoration: "none !important"
+        textDecoration: "none !important",
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 700,
+    },
+    buttonToOpenAccountLabel: {
+        letterSpacing: 1,
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 500,
+        background: '#5F87E8',
+        color: '#fff'
+    },
+    buttonToOpenAccount: {
+        "&:hover": {
+            boxShadow: " 0 0 10px rgba(0,0,0,0.5)",
+            borderColor: "#FFFFFF",
+            color: "#FFFFFF",
+            backgroundColor: "rgba(21,21,21,0.4)",
+            borderWidth: 2
+        },
     }
 });
 
@@ -46,22 +64,36 @@ const NavBar = ({
     const menuItems = [
         {
             link: "/",
-            name: "Главная",
+            name: "Торговля",
+            icon: <HomeIcon className="text-white"/>
+        },
+        {
+            link: "/",
+            name: "Инвестиции",
+            icon: <HomeIcon className="text-white"/>
+        },
+        {
+            link: "/",
+            name: "Обучение",
+            icon: <HomeIcon className="text-white"/>
+        },
+        {
+            link: "/",
+            name: "Профессионалам",
             icon: <HomeIcon className="text-white"/>
         },
         {
             link: "/news",
-            name: "Новости",
+            name: "Банк",
             icon: <AnnouncementIcon className="text-white"/>
         },
-        // {
-        //     name: "Регистрация",
-        //     onClick: openRegisterDialog,
-        //     icon: <HowToRegIcon className="text-white"/>
-        // },
+// {
+// name: "Регистрация",
+// onClick: openRegisterDialog,
+// icon: <HowToRegIcon className="text-white"/>
+// },
         {
-            name: "Войти",
-            onClick: openLoginDialog,
+            name: "Открыть счет",
             icon: <LockOpenIcon className="text-white"/>
         }
     ];
@@ -79,17 +111,9 @@ const NavBar = ({
                                 variant="h4"
                                 className={classes.brandText}
                                 display="inline"
-                                color="primary"
-                            >
-                                n
-                            </Typography>
-                            <Typography
-                                variant="h4"
-                                className={classes.brandText}
-                                display="inline"
                                 color="secondary"
                             >
-                                Edu
+                                БКС
                             </Typography>
                         </div>
                     </Link>
@@ -114,7 +138,7 @@ const NavBar = ({
                                         >
                                             <Button
                                                 color="secondary"
-                                                size="large"
+                                                size="small"
                                                 classes={{text: classes.menuButtonText}}
                                             >
                                                 {element.name}
@@ -124,10 +148,13 @@ const NavBar = ({
                                 }
                                 return (
                                     <Button
-                                        color="secondary"
+                                        color="primary"
                                         size="large"
                                         onClick={element.onClick}
-                                        classes={{text: classes.menuButtonText}}
+                                        classes={{
+                                            text: classes.buttonToOpenAccountLabel,
+                                            root: classes.buttonToOpenAccount
+                                        }}
                                         key={element.name}
                                     >
                                         {element.name}

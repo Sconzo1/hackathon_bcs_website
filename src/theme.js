@@ -86,6 +86,9 @@ const theme = createMuiTheme({
         MuiTypography: {
             h6: {
                 fontFamily: "'Montserrat'",
+            },
+            h5: {
+                fontFamily: "'Montserrat'",
             }
         },
         MuiExpansionPanel: {

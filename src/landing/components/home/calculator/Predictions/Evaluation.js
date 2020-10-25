@@ -61,13 +61,26 @@ function findIISIncome(investmentSum, monthlyPayment, period, rate) {
     }
 }
 
+function getFutureMonth(period) {
+    const currentMonth = new Date().getMonth()
+    const months = ['январю', 'февралю', 'марту', 'апрелю', 'маю', 'июню', 'июлю', 'августу', 'сентябрю', 'октябрю', 'ноябрю', 'декабрю'];
+    const futureMonth = (currentMonth + period) % 12
+    return months[futureMonth]
+}
+
+function getFutureYear(period) {
+    var date = new Date()
+    date.setMonth(date.getMonth() + parseInt(period, 10))    
+    return date.getFullYear();
+}
+
 function Evaluation({ currency, investmentSum, monthlyPayment, period, rate }) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <GradientTypography variant="h4" color="secondary" gutterBottom>
-                Накоплю к октябрю {2020 + Math.floor(period / 12)} года
+                Накоплю к {getFutureMonth(period)} {getFutureYear(period)} года
                 </GradientTypography>
             <div>
                 <Grid container>

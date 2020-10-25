@@ -4,7 +4,8 @@ import Heads from "./Head";
 import Features from "./Features";
 import Pricing from "./Pricing";
 import WhoWeAre from "./WhoWeAre";
-import WhatWeDo from "./WhatWeDo";
+import InvestmentsLife from "./InvestmentsLife";
+import InvestStart from "./InvestStart";
 import OurEfficiency from "./OurEfficiency";
 import Testimonials from "./Testimonials";
 import Fab from "@material-ui/core/Fab";
@@ -38,7 +39,8 @@ const Home = ({selectHome, refFooter, width}) => {
             <div ref={refTop}/>
             {/*<Heads refFooter={refFooter}/>*/}
             <WhoWeAre/>
-            <WhatWeDo/>
+            <InvestmentsLife/>
+            <InvestStart/>
             {/*<OurEfficiency/>*/}
             {/*<Features/>*/}
             {/*<Testimonials/>*/}

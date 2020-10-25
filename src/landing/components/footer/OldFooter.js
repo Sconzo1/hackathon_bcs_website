@@ -139,7 +139,7 @@ const socialIcons = [
     }
 ];
 
-const Footer = ({classes, theme, width, refFooter}) => {
+const OldFooter = ({classes, theme, width, refFooter}) => {
 
     const [open, setOpen] = useState(false);
 
@@ -316,11 +316,11 @@ const Footer = ({classes, theme, width, refFooter}) => {
     );
 }
 
-Footer.propTypes = {
+OldFooter.propTypes = {
     theme: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     width: PropTypes.string.isRequired,
     refFooter: PropTypes.object.isRequired
 };
 
-export default withWidth()(withStyles(styles, {withTheme: true})(Footer));
+export default withWidth()(withStyles(styles, {withTheme: true})(OldFooter));

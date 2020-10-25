@@ -2,56 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Box, ButtonBase, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
-import Image from "./images/whatWeDo.jpg";
-import {alphaHex} from "../../../shared/functions/alphaHex";
+import Image from "./images/investmentsLife.jpg";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import Card from "@material-ui/core/Card";
 
 
 const styles = (theme) => ({
-    imageContainer: {},
     button: {
         marginTop: theme.spacing(4)
     },
     image: {
         width: "100%",
+        height: "100%",
+        objectFit: "cover"
     },
     rightWrapper: {
         paddingBottom: theme.spacing(12),
         paddingTop: theme.spacing(12),
     },
-    wrapperIcons: {
-        paddingBottom: theme.spacing(4),
-        paddingTop: theme.spacing(8),
-    },
-    container: {
-        marginTop: theme.spacing(6),
-        marginBottom: theme.spacing(12),
-        [theme.breakpoints.down("md")]: {
-            marginBottom: theme.spacing(9),
-        },
-        [theme.breakpoints.down("sm")]: {
-            marginBottom: theme.spacing(6),
-        },
-        [theme.breakpoints.down("sm")]: {
-            marginBottom: theme.spacing(3),
-        },
-    },
     containerFix: {
         [theme.breakpoints.up("md")]: {
             maxWidth: "none !important",
         },
-    },
-    iconWrapper: {
-        color: theme.palette.secondary.main,
-        backgroundColor: alphaHex(theme.palette.secondary.main, 0.2),
-        borderRadius: theme.shape.borderRadius,
-        textAlign: "center",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: theme.spacing(1.3),
-        boxShadow: theme.shadows[1]
     },
     card: {
         float: "left",
@@ -64,7 +36,7 @@ const styles = (theme) => ({
     }
 });
 
-const WhatWeDo = ({classes, width}) => {
+const InvestmentsLife = ({classes, width}) => {
 
     return (
         <div style={{backgroundColor: "#FFFFFF"}}>
@@ -73,8 +45,7 @@ const WhatWeDo = ({classes, width}) => {
                 <Grid container spacing={6}>
                     <Hidden smDown>
                         <Grid item md={6}
-                              data-aos="fade-right"
-                              className={classes.imageContainer}>
+                              data-aos="fade-right">
                             <Card variant="outlined" className={classes.card}>
                                 <Typography paragraph variant="body1"
                                             color="initial"
@@ -128,11 +99,11 @@ const WhatWeDo = ({classes, width}) => {
     );
 }
 
-WhatWeDo.propTypes = {
+InvestmentsLife.propTypes = {
     classes: PropTypes.object.isRequired,
     width: PropTypes.string.isRequired
 };
 
 export default withWidth()(
-    withStyles(styles, {withTheme: true})(WhatWeDo)
+    withStyles(styles, {withTheme: true})(InvestmentsLife)
 );

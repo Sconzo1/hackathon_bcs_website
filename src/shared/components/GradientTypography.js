@@ -7,7 +7,7 @@ function GradientTypography(props) {
         <Typography paragraph {...rest}>
             <span className="title-montserrat" style={{
                 background: "linear-gradient(303.91deg, #8A8AF4 7.57%, #3984DD 94.39%)",
-                webkitBackgroundClip: "text",
+                WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent"
             }}>{children}</span>

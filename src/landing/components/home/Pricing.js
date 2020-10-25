@@ -41,10 +41,10 @@ const styles = theme => ({
 
 const Pricing = ({width, classes}) => {
     return (
-        <div className="lg-p-top" style={{backgroundColor: "#FFFFFF"}}>
+        <div style={{backgroundColor: "#FFFFFF"}}>
             <Typography variant="h3" align="center" className="lg-mg-bottom title-comfortaa"
                         data-aos="fade-up">
-                Ценовая политика
+                Тарифы
             </Typography>
             <div className={classNames("container-fluid", classes.containerFix)}>
                 <Grid
@@ -65,7 +65,7 @@ const Pricing = ({width, classes}) => {
                             title="Старт"
                             pricing={
                                 <span>
-                  ₽1 499
+                  ₽199
                   <Typography display="inline"> / месяц</Typography>
                 </span>
                             }
@@ -86,7 +86,7 @@ const Pricing = ({width, classes}) => {
                             title="Премиум"
                             pricing={
                                 <span>
-                  ₽2 999
+                  ₽1 499
                   <Typography display="inline"> / месяц</Typography>
                 </span>
                             }
@@ -106,7 +106,7 @@ const Pricing = ({width, classes}) => {
                             title="Профессиональный"
                             pricing={
                                 <span>
-                  ₽4 999
+                  ₽2 999
                   <Typography display="inline"> / месяц</Typography>
                 </span>
                             }

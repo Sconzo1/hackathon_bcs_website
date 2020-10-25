@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default function StockExample({Name, TimePeriod, MinSum, YearPercent, Image, Color}) {
+export default function StockCard({Name, TimePeriod, MinSum, YearPercent, Image, Color}) {
     const classes = useStyles();
     const gradient = 'linear-gradient(90deg, ' + Color + ' 40%, #fff 150%)'
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {Box, Grid, isWidthUp, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
-import StockExample from "./cards/StockExample";
+import StockCard from "./cards/StockCard";
 import TraderBeginner from "./images/TraderBeginner.png";
 
 
@@ -70,12 +70,12 @@ const Offers = ({classes, width}) => {
                                   data-aos={
                                       isWidthUp("md", width) ? "fade-left" : "zoom-in"
                                   }>
-                                <StockExample Name={element.name}
-                                              TimePeriod={element.timePeriod}
-                                              MinSum={element.minSum}
-                                              YearPercent={element.yearPercent}
-                                              Image={TraderBeginner}
-                                              Color={element.color}/>
+                                <StockCard Name={element.name}
+                                           TimePeriod={element.timePeriod}
+                                           MinSum={element.minSum}
+                                           YearPercent={element.yearPercent}
+                                           Image={TraderBeginner}
+                                           Color={element.color}/>
                             </Grid>
                         )
                     )}

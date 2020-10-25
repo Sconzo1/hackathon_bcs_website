@@ -7,6 +7,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import {Link} from "react-router-dom";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import Divider from "@material-ui/core/Divider";
+import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = theme => ({
     socialIcon: {
@@ -26,6 +27,10 @@ const styles = theme => ({
             color: '#3d84de'
         }
     },
+
+    waveBorder: {
+        overflow: "hidden"
+    },
     brandText: {
         fontFamily: "'Montserrat', sans-serif",
         fontWeight: 700
@@ -34,21 +39,6 @@ const styles = theme => ({
         textDecoration: "none !important",
     },
 });
-
-const infos = [
-    {
-        icon: <PhoneIcon/>,
-        description: "+7 (999) 855 20-40"
-    },
-    {
-        icon: <PhoneIcon/>,
-        description: "+7 (888) 653 12-88"
-    },
-    {
-        icon: <MailIcon/>,
-        description: "support@gmail.com"
-    }
-];
 
 const menuItems = [
     {
@@ -128,68 +118,78 @@ const socialIcons = [
 const Footer = ({classes, theme, width, refFooter}) => {
 
     return (
-        <footer style={{zIndex: 1}}>
-            <Box ml={16} mr={16} mt={6} mb={6}>
-                <Grid
-                    container
-                    direction="row"
-                    justify="space-between"
-                    alignItems="center"
-                >
-                    <Grid item md={2}>
-                        <GradientTypography variant="h4">
-                            LPI
-                        </GradientTypography>
-                    </Grid>
-                    <Grid item md={5}>
-                        <Box display="flex">
-                            {menuItems.map((element, index) => (
-                                    <Box key={element.name} mr={index !== menuItems.length - 1 ? 5 : 0}>
-                                        <Link
-                                            to={element.link}
-                                            className={classes.noDecoration}
-                                        >
-                                            <Button
-                                                disableRipple
-                                                color="default"
-                                                size="small"
-                                                classes={{text: classes.menuButtonText}}
+        <footer style={{background: "#FFF", zIndex: 1, marginTop: 32}}>
+            <WaveBorder
+                upperColor="transparent"
+                // lowerColor="#8A8AF4"
+                // lowerColor="#6888eb"
+                lowerColor="#f5f7fd"
+                className={classes.waveBorder}
+                animationNegativeDelay={8}
+            />
+            <Box style={{background:"#f5f7fd"}}>
+                <Box ml={16} mr={16} mb={2} pt={4}>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="space-between"
+                        alignItems="center"
+                    >
+                        <Grid item md={2}>
+                            <GradientTypography variant="h4">
+                                LPI
+                            </GradientTypography>
+                        </Grid>
+                        <Grid item md={5}>
+                            <Box display="flex">
+                                {menuItems.map((element, index) => (
+                                        <Box key={element.name} mr={index !== menuItems.length - 1 ? 5 : 0}>
+                                            <Link
+                                                to={element.link}
+                                                className={classes.noDecoration}
                                             >
-                                                {element.name}
-                                            </Button>
-                                        </Link>
+                                                <Button
+                                                    disableRipple
+                                                    color="default"
+                                                    size="small"
+                                                    classes={{text: classes.menuButtonText}}
+                                                >
+                                                    {element.name}
+                                                </Button>
+                                            </Link>
+                                        </Box>
+                                    )
+                                )}
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Box>
+                <Divider variant="middle"/>
+                <Box ml={16} mr={16} mt={2} pb={2}>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="flex-end"
+                        alignItems="center"
+                    >
+                        <Grid item md={3}>
+                            <Box display="flex">
+                                {socialIcons.map((socialIcon, index) => (
+                                    <Box key={index} mr={index !== socialIcons.length - 1 ? 1 : 0}>
+                                        <IconButton
+                                            aria-label={socialIcon.label}
+                                            className={classes.socialIcon}
+                                            href={socialIcon.href}
+                                            target="_blank"
+                                        >
+                                            {socialIcon.icon}
+                                        </IconButton>
                                     </Box>
-                                )
-                            )}
-                        </Box>
+                                ))}
+                            </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
-            <Divider variant="middle"/>
-            <Box ml={16} mr={16} mt={2} mb={2}>
-                <Grid
-                    container
-                    direction="row"
-                    justify="flex-end"
-                    alignItems="center"
-                >
-                    <Grid item md={3}>
-                        <Box display="flex">
-                            {socialIcons.map((socialIcon, index) => (
-                                <Box key={index} mr={index !== socialIcons.length - 1 ? 1 : 0}>
-                                    <IconButton
-                                        aria-label={socialIcon.label}
-                                        className={classes.socialIcon}
-                                        href={socialIcon.href}
-                                        target="_blank"
-                                    >
-                                        {socialIcon.icon}
-                                    </IconButton>
-                                </Box>
-                            ))}
-                        </Box>
-                    </Grid>
-                </Grid>
+                </Box>
             </Box>
         </footer>
     );

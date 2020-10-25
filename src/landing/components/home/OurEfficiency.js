@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Box, Grid, Typography, withStyles} from "@material-ui/core";
 import classNames from "classnames";
+import GradientTypography from "../../../shared/components/GradientTypography";
 
 const styles = (theme) => ({
     image: {
@@ -35,10 +36,6 @@ const styles = (theme) => ({
             maxWidth: "none !important",
         },
     },
-    iconPros: {
-        color: theme.palette.primary.main,
-        fontSize: 40
-    }
 });
 
 
@@ -46,27 +43,27 @@ const WhatWeDo = ({classes}) => {
 
     const features = [
         {
-            number: 12398,
-            text: "часов занятий"
+            number: 3.78,
+            text: "трлн. оборота"
         },
         {
-            number: 220,
+            number: 25,
             text: "лет работы"
         },
         {
-            number: 1200,
-            text: "кружек чая"
+            number: 534,
+            text: "тыс. клиентов"
         },
         {
-            number: 8951,
-            text: "довольных клиентов"
+            number: 893,
+            text: "аналитика"
         },
     ];
 
     return (
-        <div style={{backgroundColor: "#262626"}}>
+        <div style={{backgroundColor: "#FFF"}}>
             <Box display="flex" justifyContent="center" className="row">
-                <Box pt={10} pb={10} width="100%" color="white">
+                <Box pt={10} pb={5} width="100%" color="white">
                     <div className={classNames(classes.containerFix, "container")}>
                         <Grid container
                               spacing={6}
@@ -79,18 +76,18 @@ const WhatWeDo = ({classes}) => {
                                       md
                                       key={i}
                                       data-aos="zoom-out">
-                                    <Typography variant="h2" align="center"
-                                                style={{fontFamily: "'Comfortaa'", fontWeight: 700}}>
+                                    <GradientTypography variant="h2" align="center"
+                                                        style={{fontFamily: "'Comfortaa'", fontWeight: 700}}>
                                         {number}
-                                    </Typography>
-                                    <Typography variant="subtitle1" align="center"
-                                                style={{
-                                                    fontFamily: "'Comfortaa'",
-                                                    fontWeight: 100,
-                                                    textTransform: "uppercase"
-                                                }}>
+                                    </GradientTypography>
+                                    <GradientTypography variant="subtitle1" align="center"
+                                                        style={{
+                                                            fontFamily: "'Comfortaa'",
+                                                            fontWeight: 100,
+                                                            textTransform: "uppercase"
+                                                        }}>
                                         {text}
-                                    </Typography>
+                                    </GradientTypography>
                                 </Grid>
                             ))}
                         </Grid>

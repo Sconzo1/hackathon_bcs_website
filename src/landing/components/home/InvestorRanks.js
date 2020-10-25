@@ -151,9 +151,9 @@ const InvestorRanks = ({classes, width, onTraderChanged}) => {
                           }
                     >
                         <div className={classes.div}/>
-                        {InvestorImage(classes, "Начинающий", ImageBeginner, onTraderChanged)}
-                        {InvestorImage(classes, "Опытный", ImageIntermediate, onTraderChanged)}
-                        {InvestorImage(classes, "Эксперт", ImageAdvanced, onTraderChanged)}
+                        {InvestorImage(classes, "Начинающий инвестор", ImageBeginner, onTraderChanged)}
+                        {InvestorImage(classes, "Опытный инвестор", ImageIntermediate, onTraderChanged)}
+                        {InvestorImage(classes, "Инвестор-эксперт", ImageAdvanced, onTraderChanged)}
 
 
                     </Grid>

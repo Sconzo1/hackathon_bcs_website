@@ -18,6 +18,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing(4),
         paddingLeft: theme.spacing(4),
         paddingRight: theme.spacing(4),
+        background: "linear-gradient(303.91deg, #8A8AF4 7.57%, #3984DD 94.39%)",
         border: `3px solid ${theme.palette.primary.dark}`,
         borderRadius: theme.shape.borderRadius * 2,
         backgroundColor: theme.palette.primary.main,

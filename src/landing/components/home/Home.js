@@ -7,8 +7,9 @@ import withWidth from "@material-ui/core/withWidth";
 import Greeting from "./Greeting";
 import TraderBeginner from './images/TraderBeginner.png';
 import TraderPortair from "./TraderPortair";
-import Calculator from "./calculator/Calculator"
-import InvestorRanks from './InvestorRanks'
+import Calculator from "./calculator/Calculator";
+import InvestorRanks from './InvestorRanks';
+import StockExample from './cards/StockExample';
 
 
 const Home = ({selectHome, refFooter, width}) => {
@@ -35,10 +36,12 @@ const Home = ({selectHome, refFooter, width}) => {
             <div ref={refTop}/>
             {/*<Heads refFooter={refFooter}/>*/}
             <Greeting/>
+            <StockExample Name={'Защищенные инвестиции сбербанк'} TimePeriod={'3 месяца'} MinSum={'15000 руб.'} YearPercent={'9%'} Image={TraderBeginner} Color={'#f22e42'}/>
             <InvestmentsLife/>
             <InvestStart/>
             <InvestorRanks/>
             <Calculator/>
+            
             {/*<OurEfficiency/>*/}
             {/*<Features/>*/}
             {/*<Testimonials/>*/}

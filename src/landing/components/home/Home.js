@@ -13,6 +13,7 @@ import ScrollTo from "../../../shared/components/ScrollTo"
 import {isWidthDown} from "@material-ui/core";
 import withWidth from "@material-ui/core/withWidth";
 import Calculator from "./calculator/Calculator"
+import InvestorRanks from './InvestorRanks'
 
 
 const Home = ({selectHome, refFooter, width}) => {
@@ -40,8 +41,11 @@ const Home = ({selectHome, refFooter, width}) => {
             <Heads refFooter={refFooter}/>
             
             <WhoWeAre/>
-            <Calculator />
+            
             <WhatWeDo/>
+            <InvestorRanks/>
+
+            <Calculator />
             {/*<OurEfficiency/>*/}
             {/*<Features/>*/}
             {/*<Testimonials/>*/}

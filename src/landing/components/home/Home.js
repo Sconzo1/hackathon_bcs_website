@@ -12,6 +12,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ScrollTo from "../../../shared/components/ScrollTo"
 import {isWidthDown} from "@material-ui/core";
 import withWidth from "@material-ui/core/withWidth";
+import Greeting from "../greetings/Greeting";
 
 
 const Home = ({selectHome, refFooter, width}) => {
@@ -37,7 +38,7 @@ const Home = ({selectHome, refFooter, width}) => {
         <Fragment>
             <div ref={refTop}/>
             {/*<Heads refFooter={refFooter}/>*/}
-            <WhoWeAre/>
+            <Greeting/>
             <WhatWeDo/>
             {/*<OurEfficiency/>*/}
             {/*<Features/>*/}

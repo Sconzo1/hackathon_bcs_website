@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageBeginner from "./images/imageBeginner.png";
 import ImageIntermediate from "./images/imageIntermediate.png";
 import ImageAdvanced from "./images/imageAdvanced.png";
+import traders from './Traders/Traders'
 
 
 const styles = (theme) => ({
@@ -72,7 +73,7 @@ const styles = (theme) => ({
 });
 
 
-function InvestorImage(classes, level, img, onTraderChanged) {
+function InvestorImage(classes, trader, onTraderChanged) {
     return (
         <div className={classNames(classes.rightWrapper)}>
             <Grid item
@@ -81,13 +82,13 @@ function InvestorImage(classes, level, img, onTraderChanged) {
             >
                 <Paper elevation={24}
                        style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}} onClick={()=>
-                        onTraderChanged(img, level)}>
-                    <Avatar src={img} className={classes.large}/>
+                        onTraderChanged(trader)}>
+                    <Avatar src={trader.IMAGE} className={classes.large}/>
 
                     <Typography variant="h6"
                                 color="textSecondary"
                                 style={{fontWeight: 400}}>
-                        {level}
+                        {trader.NAME}
                     </Typography>
                     <ButtonBase disableRipple className={classes.button}>
                         <GradientTypography variant="h6">
@@ -151,9 +152,9 @@ const InvestorRanks = ({classes, width, onTraderChanged}) => {
                           }
                     >
                         <div className={classes.div}/>
-                        {InvestorImage(classes, "Начинающий инвестор", ImageBeginner, onTraderChanged)}
-                        {InvestorImage(classes, "Опытный инвестор", ImageIntermediate, onTraderChanged)}
-                        {InvestorImage(classes, "Инвестор-эксперт", ImageAdvanced, onTraderChanged)}
+                        {InvestorImage(classes, traders[0], onTraderChanged)}
+                        {InvestorImage(classes, traders[1], onTraderChanged)}
+                        {InvestorImage(classes, traders[2], onTraderChanged)}
 
 
                     </Grid>

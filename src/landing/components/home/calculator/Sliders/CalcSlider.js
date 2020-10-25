@@ -8,8 +8,7 @@ import GradientTypography from "../../../../../shared/components/GradientTypogra
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 400 + theme.spacing(3) * 2,
-        margin: "20px"
+        margin: 20
     },
     margin: {
         height: theme.spacing(3)

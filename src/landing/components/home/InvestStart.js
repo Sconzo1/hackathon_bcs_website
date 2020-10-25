@@ -116,10 +116,11 @@ const InvestStart = ({classes, theme}) => {
                 <Box display="flex" justifyContent="space-between"
                      className={classNames(classes.containerFix, "container-fluid lg-mg-top")}
                      style={{
-                         paddingLeft: 0
+                         paddingLeft: 0,
+                         paddingRight: 0
                      }}>
                     <Grid container>
-                        <Grid item md={11}
+                        <Grid item xs={12} md={11}
                               data-aos="fade-right">
                             <Card variant="outlined" className={classes.card}>
                                 <Grid container>

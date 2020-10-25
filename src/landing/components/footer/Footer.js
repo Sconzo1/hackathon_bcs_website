@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Box, Button, Grid, IconButton, withStyles, withWidth} from "@material-ui/core";
-import PhoneIcon from "@material-ui/icons/Phone";
-import MailIcon from "@material-ui/icons/Mail";
+import {Box, Button, Grid, IconButton, isWidthUp, withStyles, withWidth} from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import {Link} from "react-router-dom";
 import GradientTypography from "../../../shared/components/GradientTypography";
@@ -43,7 +41,7 @@ const styles = theme => ({
 const menuItems = [
     {
         link: "/",
-        name: "О компании",
+        name: "О нас",
         isOpen: true,
         icon: <HomeIcon className="text-white"/>
     },
@@ -121,72 +119,76 @@ const Footer = ({classes, theme, width, refFooter}) => {
         <footer style={{background: "#FFF", zIndex: 1, marginTop: 32}}>
             <WaveBorder
                 upperColor="transparent"
-                // lowerColor="#8A8AF4"
-                // lowerColor="#6888eb"
                 lowerColor="#f5f7fd"
                 className={classes.waveBorder}
                 animationNegativeDelay={8}
             />
-            <Box style={{background:"#f5f7fd"}}>
-                <Box ml={16} mr={16} mb={2} pt={4}>
+            <Box style={{background: "#f5f7fd"}}>
+                <Box ml={isWidthUp(width, "xs") ? 1 : 16}
+                     mr={isWidthUp(width, "xs") ? 1 : 16}
+                     mb={2} pt={4}>
                     <Grid
                         container
-                        direction="row"
+                        direction={isWidthUp(width, "xs") ? "column" : "row"}
                         justify="space-between"
                         alignItems="center"
                     >
-                        <Grid item md={2}>
+                        <Grid item xs={12} md={2}>
                             <GradientTypography variant="h4">
                                 LPI
                             </GradientTypography>
                         </Grid>
-                        <Grid item md={5}>
-                            <Box display="flex">
-                                {menuItems.map((element, index) => (
-                                        <Box key={element.name} mr={index !== menuItems.length - 1 ? 5 : 0}>
-                                            <Link
-                                                to={element.link}
-                                                className={classes.noDecoration}
+                        <Grid container item xs={12} md={5}
+                              direction={isWidthUp(width, "xs") ? "column" : "row"}
+                              justify="space-between"
+                              alignItems="center">
+                            {menuItems.map((element, index) => (
+                                    <Grid key={element.name} item md={4}>
+                                        <Link
+                                            to={element.link}
+                                            className={classes.noDecoration}
+                                        >
+                                            <Button
+                                                disableRipple
+                                                color="default"
+                                                size="small"
+                                                classes={{text: classes.menuButtonText}}
                                             >
-                                                <Button
-                                                    disableRipple
-                                                    color="default"
-                                                    size="small"
-                                                    classes={{text: classes.menuButtonText}}
-                                                >
-                                                    {element.name}
-                                                </Button>
-                                            </Link>
-                                        </Box>
-                                    )
-                                )}
-                            </Box>
+                                                {element.name}
+                                            </Button>
+                                        </Link>
+                                    </Grid>
+                                )
+                            )}
                         </Grid>
                     </Grid>
                 </Box>
                 <Divider variant="middle"/>
-                <Box ml={16} mr={16} mt={2} pb={2}>
+                <Box ml={isWidthUp(width, "xs") ? 1 : 16}
+                     mr={isWidthUp(width, "xs") ? 1 : 16}
+                     mt={2} pb={2}>
                     <Grid
                         container
-                        direction="row"
+                        direction={isWidthUp(width, "xs") ? "column" : "row"}
                         justify="flex-end"
                         alignItems="center"
                     >
-                        <Grid item md={3}>
-                            <Box display="flex">
-                                {socialIcons.map((socialIcon, index) => (
-                                    <Box key={index} mr={index !== socialIcons.length - 1 ? 1 : 0}>
-                                        <IconButton
-                                            aria-label={socialIcon.label}
-                                            className={classes.socialIcon}
-                                            href={socialIcon.href}
-                                            target="_blank"
-                                        >
-                                            {socialIcon.icon}
-                                        </IconButton>
-                                    </Box>
-                                ))}
-                            </Box>
+                        <Grid container item xs={12} md={5}
+                              direction="row"
+                              justify={isWidthUp(width, "xs") ? "center" : "flex-end"}
+                              alignItems="flex-end">
+                            {socialIcons.map((socialIcon, index) => (
+                                <Grid key={socialIcon.label} item md>
+                                    <IconButton
+                                        aria-label={socialIcon.label}
+                                        className={classes.socialIcon}
+                                        href={socialIcon.href}
+                                        target="_blank"
+                                    >
+                                        {socialIcon.icon}
+                                    </IconButton>
+                                </Grid>
+                            ))}
                         </Grid>
                     </Grid>
                 </Box>

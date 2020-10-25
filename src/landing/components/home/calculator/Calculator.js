@@ -53,9 +53,10 @@ function Calculator() {
 
 
     return (
-        <div>
+        <div className="lg-mg-top">
             <Grid container justify="center">
-                <Grid item>
+                <Grid item md={1}/>
+                <Grid item md={3}>
                     <CalcSlider
                         currency={currency}
                         investmentSum={investmentSum}
@@ -67,8 +68,7 @@ function Calculator() {
                         onPeriodChanged={onPeriodChanged}
                     />
                 </Grid>
-
-                <Grid item>
+                <Grid item md>
                     <Evaluation
                         currency={currency}
                         investmentSum={investmentSum}
@@ -77,6 +77,7 @@ function Calculator() {
                         rate={rate}
                     />
                 </Grid>
+                <Grid item md={1}/>
             </Grid>
 
         </div>

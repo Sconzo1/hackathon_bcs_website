@@ -11,9 +11,9 @@ const ColoredTypography = withStyles({
 })(Typography);
 
 
-const labelValue = (label, value, xs) => {
+const labelValue = (label, value) => {
     return (
-        <Grid item xs={xs} style={{ marginTop: "22px" }}>
+        <Grid item xs={12} md={6} style={{ marginTop: "22px" }}>
             <ColoredTypography gutterBottom>{label}</ColoredTypography>
 
             <ColoredTypography component="div">
@@ -29,8 +29,7 @@ const labelValue = (label, value, xs) => {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 700 + theme.spacing(3) * 2,
-        margin: "20px"
+        margin: 20
     },
     margin: {
         height: theme.spacing(3)
@@ -84,11 +83,11 @@ function Evaluation({ currency, investmentSum, monthlyPayment, period, rate }) {
                 </GradientTypography>
             <div>
                 <Grid container>
-                    {labelValue("Ожидаемая стоимость портфеля", `${numberWithSpaces(findFutureSum(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
-                    {labelValue("Ожидаемый доход с учетом комиссии", `${numberWithSpaces(findPureIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
-                    {labelValue("Доход с ИИС", `${numberWithSpaces(findIISIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 2)}
-                    {labelValue("Ожидаемая доходность", `${numberWithSpaces((findPureIncome(investmentSum, monthlyPayment, period, rate) / investmentSum * 100).toFixed(2))} %`, 5)}
-                    {labelValue("Историческая доходность", `${60} %`, 5)}
+                    {labelValue("Ожидаемая стоимость портфеля", `${numberWithSpaces(findFutureSum(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`)}
+                    {labelValue("Ожидаемая доходность", `${numberWithSpaces((findPureIncome(investmentSum, monthlyPayment, period, rate) / investmentSum * 100).toFixed(2))} %`)}
+                    {labelValue("Доход с ИИС", `${numberWithSpaces(findIISIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`)}
+                    {labelValue("Историческая доходность", `${60} %`)}
+                    {labelValue("Ожидаемый доход с учетом комиссии", `${numberWithSpaces(findPureIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`)}
                 </Grid>
             </div>
         </div>

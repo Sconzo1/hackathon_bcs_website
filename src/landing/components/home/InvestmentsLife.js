@@ -5,11 +5,16 @@ import classNames from "classnames";
 import Image from "./images/investmentsLife.jpg";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import Card from "@material-ui/core/Card";
+import ArrowRightRoundedIcon from '@material-ui/icons/ArrowRightRounded';
 
 
 const styles = (theme) => ({
     button: {
         marginTop: theme.spacing(4)
+    },
+    icon: {
+        fill: "#3984DD",
+        marginTop: theme.spacing(-2)
     },
     image: {
         width: "100%",
@@ -86,8 +91,10 @@ const InvestmentsLife = ({classes, width}) => {
                                     перспективе
                                 </Typography>
                                 <ButtonBase disableRipple className={classes.button}>
+                                    <ArrowRightRoundedIcon className={classes.icon} fontSize="large"/>
                                     <GradientTypography variant="h6">
-                                        ⯈ Узнать больше
+                                        Узнать
+                                        больше
                                     </GradientTypography>
                                 </ButtonBase>
                             </Grid>

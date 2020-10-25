@@ -2,13 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Box, ButtonBase, Grid, isWidthUp, Paper, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
-import {alphaHex} from "../../../shared/functions/alphaHex";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import Avatar from '@material-ui/core/Avatar';
-import ImageBeginner from "./images/imageBeginner.png";
-import ImageIntermediate from "./images/imageIntermediate.png";
-import ImageAdvanced from "./images/imageAdvanced.png";
 import traders from './Traders/Traders'
+import ArrowRightRoundedIcon from '@material-ui/icons/ArrowRightRounded';
 
 
 const styles = (theme) => ({
@@ -21,8 +18,8 @@ const styles = (theme) => ({
     },
     rightWrapper: {
         zIndex: 1,
-        paddingBottom: theme.spacing(12),
-        paddingTop: theme.spacing(12),
+        paddingBottom: theme.spacing(1),
+        paddingTop: theme.spacing(1),
     },
     container: {
         marginTop: theme.spacing(6),
@@ -65,35 +62,41 @@ const styles = (theme) => ({
         position: "absolute",
         zIndex: -1,
         width: "980px",
-        height: "250px",
+        height: theme.spacing(32),
+        [theme.breakpoints.down("xs")]: {
+            height: theme.spacing(32*3.6),
+        },
         background: "linear-gradient(303.91deg, #8A8AF4 7.57%, #3984DD 94.39%)",
         right: 0,
         top: 0
-    }
+    },
+    icon: {
+        fill: "#3984DD",
+        marginTop: theme.spacing(-2)
+    },
 });
 
 
 function InvestorImage(classes, trader, onTraderChanged) {
     return (
-        <div className={classNames(classes.rightWrapper)}>
+        <div className={classes.rightWrapper}>
             <Grid item
                   container
-                  style={{width: "auto", marginLeft: "0px", marginRight: "15px"}}
+                  xs={12}
+                  style={{width: "auto", marginLeft: 0, marginRight: 15}}
             >
                 <Paper elevation={24}
-                       style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}} onClick={()=>
-                        onTraderChanged(trader)}>
+                       style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}}
+                       onClick={() =>
+                           onTraderChanged(trader)}>
                     <Avatar src={trader.IMAGE} className={classes.large}/>
-
                     <Typography variant="h6"
                                 color="textSecondary"
                                 style={{fontWeight: 400}}>
                         {trader.NAME}
                     </Typography>
                     <ButtonBase disableRipple className={classes.button}>
-                        <GradientTypography variant="h6">
-                            ⯈
-                        </GradientTypography>
+                        <ArrowRightRoundedIcon className={classes.icon} fontSize="large"/>
                     </ButtonBase>
 
                 </Paper>
@@ -133,9 +136,7 @@ const InvestorRanks = ({classes, width, onTraderChanged}) => {
                                     Выбирайте подходящий вам план и зарабатывайте на инвестициях
                                 </Typography>
                                 <ButtonBase disableRipple className={classes.button}>
-                                    <GradientTypography variant="h6">
-                                        ⯈
-                                    </GradientTypography>
+                                    <ArrowRightRoundedIcon className={classes.icon} fontSize="large"/>
                                 </ButtonBase>
                             </Grid>
                         </div>

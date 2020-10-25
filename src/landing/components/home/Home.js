@@ -9,7 +9,7 @@ import TraderBeginner from './images/TraderBeginner.png';
 import TraderPortair from "./TraderPortair";
 import Calculator from "./calculator/Calculator";
 import InvestorRanks from './InvestorRanks';
-import StockExample from './cards/StockExample';
+import Offers from "./Offers";
 
 
 const Home = ({selectHome, refFooter, width}) => {
@@ -34,23 +34,11 @@ const Home = ({selectHome, refFooter, width}) => {
     return (
         <Fragment>
             <div ref={refTop}/>
-            {/*<Heads refFooter={refFooter}/>*/}
             <Greeting/>
-            <StockExample Name={'Защищенные инвестиции сбербанк'} TimePeriod={'3 месяца'} MinSum={'15000 руб.'} YearPercent={'9%'} Image={TraderBeginner} Color={'#f22e42'}/>
             <InvestmentsLife/>
             <InvestStart/>
             <InvestorRanks/>
             <Calculator/>
-            
-            {/*<OurEfficiency/>*/}
-            {/*<Features/>*/}
-            {/*<Testimonials/>*/}
-            {/*<Pricing/>*/}
-            {/*<ScrollTo anchorRef={refTop} stopThreshold={getStopThreshold()}>*/}
-            {/*    <Fab color="secondary" size="medium" aria-label="Scroll to top" style={{zIndex: 2}}>*/}
-            {/*        <KeyboardArrowUpIcon/>*/}
-            {/*    </Fab>*/}
-            {/*</ScrollTo>*/}
             <TraderPortair
                 Image={TraderBeginner}
                 TraderName={'Начинающий инвестор'}
@@ -59,6 +47,7 @@ const Home = ({selectHome, refFooter, width}) => {
                 финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
                 стоимости акций, преобладающих в их портфеле.
                 Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`}/>
+            <Offers/>
         </Fragment>
     );
 }

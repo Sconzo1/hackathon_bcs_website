@@ -35,7 +35,7 @@ function CalcSlider({currency, investmentSum, monthlyPayment, period, onCurrency
                 <SingleSlider name="Ежемесячные пополнения" min={100} max={100000} step={100} currency={currency}
                               value={monthlyPayment} onChanged={onMonthlyPaymentChanged}/>
                 <div className={classes.margin}/>
-                <SingleSliderDuration name="На срок" min={1} max={60} step={1} currency="months" value={period}
+                <SingleSliderDuration name="На срок" min={1} max={60} step={1} currency="месяцев" value={period}
                                       onChanged={onPeriodChanged}/>
 
 

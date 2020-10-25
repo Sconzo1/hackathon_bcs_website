@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useRef} from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import Heads from "./Head";
 import Features from "./Features";
@@ -11,11 +11,14 @@ import Testimonials from "./Testimonials";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ScrollTo from "../../../shared/components/ScrollTo"
-import {isWidthDown} from "@material-ui/core";
+import { isWidthDown } from "@material-ui/core";
 import withWidth from "@material-ui/core/withWidth";
+import Greeting from "../greetings/Greeting";
+import TraderBeginner from './images/TraderBeginner.png';
+import TraderPortair from './TraderPortair'
 
 
-const Home = ({selectHome, refFooter, width}) => {
+const Home = ({ selectHome, refFooter, width }) => {
     const refTop = useRef();
 
     useEffect(() => {
@@ -36,8 +39,10 @@ const Home = ({selectHome, refFooter, width}) => {
 
     return (
         <Fragment>
-            <div ref={refTop}/>
+            <div ref={refTop} />
             {/*<Heads refFooter={refFooter}/>*/}
+            <Greeting />
+            <WhatWeDo />
             <WhoWeAre/>
             <InvestmentsLife/>
             <InvestStart/>
@@ -50,6 +55,14 @@ const Home = ({selectHome, refFooter, width}) => {
             {/*        <KeyboardArrowUpIcon/>*/}
             {/*    </Fab>*/}
             {/*</ScrollTo>*/}
+            <TraderPortair
+                Image={TraderBeginner}
+                TraderName={'Начинающий инвестор'}
+                TraderDescription={`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
+                дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
+                финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
+                стоимости акций, преобладающих в их портфеле.
+                Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`} />
         </Fragment>
     );
 }

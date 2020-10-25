@@ -1,12 +1,19 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
-import {AppBar, Button, Hidden, IconButton, Toolbar, Typography, withStyles} from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { AppBar, Button, Hidden, IconButton, Toolbar, Typography, withStyles, Grid } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
+import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+
+import GradientTypography from "../../../shared/components/GradientTypography";
 
 
 const styles = theme => ({
@@ -30,8 +37,12 @@ const styles = theme => ({
     },
     noDecoration: {
         textDecoration: "none !important",
+        fontSize: theme.typography.body1.fontSize,
+        fontWeight: theme.typography.h6.fontWeight,
+        color: '#6D6D6D',
+        letterSpacing: 1,
+        padding: '8px',
         fontFamily: "'Montserrat', sans-serif",
-        fontWeight: 700,
     },
     buttonToOpenAccountLabel: {
         letterSpacing: 1,
@@ -52,69 +63,67 @@ const styles = theme => ({
 });
 
 const NavBar = ({
-                    classes,
-                    openRegisterDialog,
-                    openLoginDialog,
-                    handleMobileDrawerOpen,
-                    handleMobileDrawerClose,
-                    mobileDrawerOpen,
-                    selectedTab
-                }) => {
+    classes,
+    openRegisterDialog,
+    openLoginDialog,
+    handleMobileDrawerOpen,
+    handleMobileDrawerClose,
+    mobileDrawerOpen,
+    selectedTab
+}) => {
 
     const menuItems = [
         {
             link: "/",
             name: "Торговля",
-            icon: <HomeIcon className="text-white"/>
+            icon: <EuroSymbolIcon className="text-white" />
         },
         {
             link: "/",
             name: "Инвестиции",
-            icon: <HomeIcon className="text-white"/>
+            icon: <BusinessCenterIcon className="text-white" />
+        },
+        {
+            link: "/",
+            name: "Сервисы",
+            icon: <AssignmentIndIcon className="text-white" />
         },
         {
             link: "/",
             name: "Обучение",
-            icon: <HomeIcon className="text-white"/>
+            icon: <HowToRegIcon className="text-white" />
         },
         {
             link: "/",
-            name: "Профессионалам",
-            icon: <HomeIcon className="text-white"/>
+            name: "Калькулятор доходности",
+            icon: <AccountBalanceIcon className="text-white" />
         },
-        {
-            link: "/news",
-            name: "Банк",
-            icon: <AnnouncementIcon className="text-white"/>
-        },
-// {
-// name: "Регистрация",
-// onClick: openRegisterDialog,
-// icon: <HowToRegIcon className="text-white"/>
-// },
+        // {
+        // name: "Регистрация",
+        // onClick: openRegisterDialog,
+        // icon: <HowToRegIcon className="text-white"/>
+        // },
         {
             name: "Открыть счет",
-            icon: <LockOpenIcon className="text-white"/>
+            icon: <LockOpenIcon className="text-white" />
         }
     ];
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position="sticky" className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Link
                         to="/"
                         className={classes.noDecoration}
                     >
                         <div>
-                            <Typography
-                                variant="h4"
-                                className={classes.brandText}
-                                display="inline"
-                                color="secondary"
+                            <GradientTypography
+                                variant="h3"
+                                display='inline'
                             >
                                 БКС
-                            </Typography>
+                            </GradientTypography>
                         </div>
                     </Link>
                     <div>
@@ -123,44 +132,45 @@ const NavBar = ({
                                 onClick={handleMobileDrawerOpen}
                                 aria-label="Open Navigation"
                             >
-                                <MenuIcon color="primary"/>
+                                <MenuIcon color="primary" />
                             </IconButton>
                         </Hidden>
                         <Hidden smDown>
-                            {menuItems.map(element => {
-                                if (element.link) {
+                            <Grid
+                                container
+                                direction="row"
+                                justify="center"
+                                alignItems="center"
+                            >
+                                {menuItems.map(element => {
+                                    if (element.link) {
+                                        return (
+                                            <Grid item>
+                                                <Link
+                                                    key={element.name}
+                                                    to={element.link}
+                                                    className={classes.noDecoration}
+                                                    onClick={handleMobileDrawerClose}
+                                                >
+                                                    {element.name}
+                                                </Link>
+                                            </Grid>
+                                        );
+                                    }
                                     return (
-                                        <Link
+                                        <Button
+                                            color="primary"
+                                            variant="contained"
+                                            size="large"
+                                            onClick={element.onClick}
+                                            classes={{ text: classes.menuButtonText }}
                                             key={element.name}
-                                            to={element.link}
-                                            className={classes.noDecoration}
-                                            onClick={handleMobileDrawerClose}
                                         >
-                                            <Button
-                                                color="secondary"
-                                                size="small"
-                                                classes={{text: classes.menuButtonText}}
-                                            >
-                                                {element.name}
-                                            </Button>
-                                        </Link>
+                                            {element.name}
+                                        </Button>
                                     );
-                                }
-                                return (
-                                    <Button
-                                        color="primary"
-                                        size="large"
-                                        onClick={element.onClick}
-                                        classes={{
-                                            text: classes.buttonToOpenAccountLabel,
-                                            root: classes.buttonToOpenAccount
-                                        }}
-                                        key={element.name}
-                                    >
-                                        {element.name}
-                                    </Button>
-                                );
-                            })}
+                                })}
+                            </Grid>
                         </Hidden>
                     </div>
                 </Toolbar>
@@ -185,4 +195,4 @@ NavBar.propTypes = {
     openLoginDialog: PropTypes.func.isRequired
 };
 
-export default withStyles(styles, {withTheme: true})(memo(NavBar));
+export default withStyles(styles, { withTheme: true })(memo(NavBar));

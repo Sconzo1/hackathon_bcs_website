@@ -1,4 +1,3 @@
-
 let globLastC = Infinity;
 
 function smoothScrollTopRec() {

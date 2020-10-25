@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import {Box, ButtonBase, Grid, TextField, Typography, withStyles, withWidth} from "@material-ui/core";
+import {Box, Grid, TextField, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
 import Card from "@material-ui/core/Card";
 import ColoredButton from "../../../shared/components/ColoredButton";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import GradientTypography from "../../../shared/components/GradientTypography";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -140,7 +139,8 @@ const InvestmentsLife = ({classes, width, theme}) => {
                                             </Box>
                                             <Box mb={2}>
                                                 <FormControlLabel
-                                                    control={<WhiteCheckbox checked={checked} onChange={handleToggle} name="checkedG" />}
+                                                    control={<WhiteCheckbox checked={checked} onChange={handleToggle}
+                                                                            name="checkedG"/>}
                                                     label={
                                                         <Typography style={{
                                                             color: "rgba(255, 255, 255, 0.8)",

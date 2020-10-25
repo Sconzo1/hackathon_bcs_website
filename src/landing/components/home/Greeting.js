@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth, IconButton } from "@material-ui/core";
+import {Box, Grid, Hidden, IconButton, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import PlayCircleFilledWhiteRoundedIcon from '@material-ui/icons/PlayCircleFilledWhiteRounded';
@@ -30,20 +30,20 @@ const styles = (theme) => ({
     }
 });
 
-const Greeting = ({ classes, width }) => {
+const Greeting = ({classes, width}) => {
 
     return (
-        <div className="lg-mg-top lg-mg-bottom" style={{ backgroundColor: "#FFFFFF" }}>
+        <div className="lg-mg-top lg-mg-bottom" style={{backgroundColor: "#FFFFFF"}}>
             <Box display="flex" justifyContent="space-between"
-                className={classNames(classes.containerFix, "container")}>
+                 className={classNames(classes.containerFix, "container")}>
                 <Grid container spacing={6}>
-                    <Grid item xl={1} />
+                    <Grid item xl={1}/>
                     <Grid item
-                        container
-                        xs={12} md={5}
-                        data-aos={
-                            isWidthUp("md", width) ? "fade-left" : "zoom-in"
-                        }
+                          container
+                          xs={12} md={5}
+                          data-aos={
+                              isWidthUp("md", width) ? "fade-left" : "zoom-in"
+                          }
                     >
                         <div>
                             <Grid
@@ -53,12 +53,12 @@ const Greeting = ({ classes, width }) => {
                                 alignItems="flex-start"
                             >
                                 <Grid item>
-                                    <GradientTypography variant="h3" >
+                                    <GradientTypography variant="h3">
                                         Персональный брокер для самых амбициозных
                                     </GradientTypography>
                                 </Grid>
                                 <Grid item>
-                                    <Typography variant="h6" color="textSecondary" style={{ fontWeight: 300 }}>
+                                    <Typography variant="h6" color="textSecondary" style={{fontWeight: 300}}>
                                         Попробуй себя в роли инвестора и реализуй свои мечты
                                     </Typography>
                                 </Grid>
@@ -66,13 +66,14 @@ const Greeting = ({ classes, width }) => {
                                     <Grid item>
                                         <IconButton
                                             className={classes.infoIcon}>
-                                            <PlayCircleFilledWhiteRoundedIcon />
+                                            <PlayCircleFilledWhiteRoundedIcon/>
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h5" color="textSecondary" style={{ fontWeight: 400, marginLeft: 24, marginTop: 40}}>
+                                        <Typography variant="h5" color="textSecondary"
+                                                    style={{fontWeight: 400, marginLeft: 24, marginTop: 40}}>
                                             Видео о нас
-                                    </Typography>
+                                        </Typography>
                                     </Grid>
                                 </Grid>
 
@@ -81,12 +82,12 @@ const Greeting = ({ classes, width }) => {
                     </Grid>
                     <Hidden smDown>
                         <Grid item md={6}
-                            data-aos="fade-right"
+                              data-aos="fade-right"
                         >
-                            <img className={classes.image} src={Image} alt="" />
+                            <img className={classes.image} src={Image} alt=""/>
                         </Grid>
                     </Hidden>
-                    <Grid item xl={1} />
+                    <Grid item xl={1}/>
                 </Grid>
             </Box>
         </div>
@@ -99,5 +100,5 @@ Greeting.propTypes = {
 };
 
 export default withWidth()(
-    withStyles(styles, { withTheme: true })(Greeting)
+    withStyles(styles, {withTheme: true})(Greeting)
 );

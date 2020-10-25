@@ -8,10 +8,10 @@ const styles = theme => ({
         /**
          * Text selection color
          */
-        "::selection" : {
+        "::selection": {
             background: "lightblue"
         },
-        "::-moz-selection" : {
+        "::-moz-selection": {
             background: "lightblue"
         },
         ".text-white": {

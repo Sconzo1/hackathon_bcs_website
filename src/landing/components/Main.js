@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, {memo, useCallback, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import AOS from "aos/dist/aos";
-import { withStyles } from "@material-ui/core";
+import {withStyles} from "@material-ui/core";
 import NavBar from "./navigation/NavBar";
 import Footer from "./footer/Footer";
 import "aos/dist/aos.css";
@@ -14,7 +14,7 @@ import urlRusLat from "../../shared/functions/urlRusLat";
 import axios from "axios";
 
 
-AOS.init({ once: true });
+AOS.init({once: true});
 
 const styles = (theme) => ({
     wrapper: {
@@ -23,7 +23,7 @@ const styles = (theme) => ({
     },
 });
 
-const Main = ({ classes }) => {
+const Main = ({classes}) => {
     const [selectedTab, setSelectedTab] = useState(null);
     const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
     const [newsPosts, setNewsPosts] = useState([]);
@@ -33,7 +33,7 @@ const Main = ({ classes }) => {
     const selectHome = useCallback(() => {
         smoothScrollTop();
         document.title =
-            "nEdu - новая архитектура обучения в школе";
+            "FFF for BCS hackathon";
         setSelectedTab("Home");
     }, [setSelectedTab]);
 
@@ -82,7 +82,7 @@ const Main = ({ classes }) => {
     }, [setIsCookieRulesDialogOpen]);
 
     function getNews() {
-        axios.post('http://project/bin/index.php', { operation: "getNews" })
+        axios.post('http://project/bin/index.php', {operation: "getNews"})
             .then(response => {
                 if (response.data.result === "success") {
                     if (response.data.news.length !== 0) {
@@ -146,7 +146,7 @@ const Main = ({ classes }) => {
                 refFooter={refFooter}
                 selectNews={selectNews}
             />
-            <Footer refFooter={refFooter} />
+            <Footer refFooter={refFooter}/>
         </div>
     );
 }
@@ -155,4 +155,4 @@ Main.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(memo(Main));
+export default withStyles(styles, {withTheme: true})(memo(Main));

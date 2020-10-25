@@ -1,13 +1,11 @@
-import React, { memo } from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { AppBar, Button, Hidden, IconButton, Toolbar, Typography, withStyles, Grid } from "@material-ui/core";
+import {Link} from "react-router-dom";
+import {AppBar, Button, Grid, Hidden, IconButton, Toolbar, withStyles} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from "@material-ui/icons/Home";
 import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import AnnouncementIcon from '@material-ui/icons/Announcement';
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
@@ -63,49 +61,44 @@ const styles = theme => ({
 });
 
 const NavBar = ({
-    classes,
-    openRegisterDialog,
-    openLoginDialog,
-    handleMobileDrawerOpen,
-    handleMobileDrawerClose,
-    mobileDrawerOpen,
-    selectedTab
-}) => {
+                    classes,
+                    openRegisterDialog,
+                    openLoginDialog,
+                    handleMobileDrawerOpen,
+                    handleMobileDrawerClose,
+                    mobileDrawerOpen,
+                    selectedTab
+                }) => {
 
     const menuItems = [
         {
             link: "/",
             name: "Торговля",
-            icon: <EuroSymbolIcon className="text-white" />
+            icon: <EuroSymbolIcon className="text-white"/>
         },
         {
             link: "/",
             name: "Инвестиции",
-            icon: <BusinessCenterIcon className="text-white" />
+            icon: <BusinessCenterIcon className="text-white"/>
         },
         {
             link: "/",
             name: "Сервисы",
-            icon: <AssignmentIndIcon className="text-white" />
+            icon: <AssignmentIndIcon className="text-white"/>
         },
         {
             link: "/",
             name: "Обучение",
-            icon: <HowToRegIcon className="text-white" />
+            icon: <HowToRegIcon className="text-white"/>
         },
         {
             link: "/",
             name: "Калькулятор",
-            icon: <AccountBalanceIcon className="text-white" />
+            icon: <AccountBalanceIcon className="text-white"/>
         },
-        // {
-        // name: "Регистрация",
-        // onClick: openRegisterDialog,
-        // icon: <HowToRegIcon className="text-white"/>
-        // },
         {
             name: "Открыть счет",
-            icon: <LockOpenIcon className="text-white" />
+            icon: <LockOpenIcon className="text-white"/>
         }
     ];
 
@@ -132,7 +125,7 @@ const NavBar = ({
                                 onClick={handleMobileDrawerOpen}
                                 aria-label="Open Navigation"
                             >
-                                <MenuIcon color="primary" />
+                                <MenuIcon color="primary"/>
                             </IconButton>
                         </Hidden>
                         <Hidden smDown>
@@ -145,9 +138,8 @@ const NavBar = ({
                                 {menuItems.map(element => {
                                     if (element.link) {
                                         return (
-                                            <Grid item>
+                                            <Grid key={element.name} item>
                                                 <Link
-                                                    key={element.name}
                                                     to={element.link}
                                                     className={classes.noDecoration}
                                                     onClick={handleMobileDrawerClose}
@@ -163,7 +155,7 @@ const NavBar = ({
                                             variant="contained"
                                             size="large"
                                             onClick={element.onClick}
-                                            classes={{ text: classes.menuButtonText }}
+                                            classes={{text: classes.menuButtonText}}
                                             key={element.name}
                                             style={{
                                                 marginLeft: 24
@@ -198,4 +190,4 @@ NavBar.propTypes = {
     openLoginDialog: PropTypes.func.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(memo(NavBar));
+export default withStyles(styles, {withTheme: true})(memo(NavBar));

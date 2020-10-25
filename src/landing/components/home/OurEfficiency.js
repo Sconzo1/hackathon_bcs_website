@@ -79,11 +79,16 @@ const WhatWeDo = ({classes}) => {
                                       md
                                       key={i}
                                       data-aos="zoom-out">
-                                    <Typography variant="h2" align="center" style={{fontFamily: "'Comfortaa'", fontWeight: 700}}>
+                                    <Typography variant="h2" align="center"
+                                                style={{fontFamily: "'Comfortaa'", fontWeight: 700}}>
                                         {number}
                                     </Typography>
                                     <Typography variant="subtitle1" align="center"
-                                                style={{fontFamily: "'Comfortaa'", fontWeight: 100, textTransform: "uppercase"}}>
+                                                style={{
+                                                    fontFamily: "'Comfortaa'",
+                                                    fontWeight: 100,
+                                                    textTransform: "uppercase"
+                                                }}>
                                         {text}
                                     </Typography>
                                 </Grid>

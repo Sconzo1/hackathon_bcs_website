@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import { Box, Grid, isWidthUp, Typography, withStyles, withWidth } from "@material-ui/core";
+import {Box, Grid, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
@@ -35,7 +35,7 @@ const styles = (theme) => ({
     },
 });
 
-const WhoWeAre = ({ classes, width }) => {
+const WhoWeAre = ({classes, width}) => {
     return (
         <Fragment>
             <WaveBorder
@@ -44,25 +44,25 @@ const WhoWeAre = ({ classes, width }) => {
                 className={classes.waveBorder}
                 animationNegativeDelay={8}
             />
-            <div style={{ backgroundColor: "#fff", marginTop: "-4vw" }}>
+            <div style={{backgroundColor: "#fff", marginTop: "-4vw"}}>
                 <div className="lg-p-top lg-p-bottom">
                     <Box display="flex" justifyContent="center">
                         <div className={classNames(classes.containerFix, "container")}>
                             <Grid container
-                                direction="column"
-                                justify="center"
-                                alignItems="center"
-                                data-aos="fade-up">
+                                  direction="column"
+                                  justify="center"
+                                  alignItems="center"
+                                  data-aos="fade-up">
                                 <Typography paragraph variant="h3" align="center" className="title-comfortaa">
                                     Кто мы
                                 </Typography>
                                 <Typography paragraph variant="h6" align="center"
-                                    className={classes.subLabel}>
+                                            className={classes.subLabel}>
                                     {isWidthUp("md", width) ? "_ Путь нашей работы - веселье _" : "Путь нашей работы - веселье"}
                                 </Typography>
                                 <Grid item md={6}>
                                     <Typography variant="h6" align="center" color="textSecondary"
-                                        style={{ fontWeight: 400 }}>
+                                                style={{fontWeight: 400}}>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis debitis
                                         doloremque fugit laboriosam numquam obcaecati odio placeat quae, quas recusandae
                                         rem, saepe sit tenetur unde ut veritatis vitae voluptate. Sed.
@@ -83,5 +83,5 @@ WhoWeAre.propTypes = {
 };
 
 export default withWidth()(
-    withStyles(styles, { withTheme: true })(WhoWeAre)
+    withStyles(styles, {withTheme: true})(WhoWeAre)
 );

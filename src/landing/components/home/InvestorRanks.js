@@ -1,13 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Box, ButtonBase, Grid, Paper, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
+import {Box, ButtonBase, Grid, isWidthUp, Paper, Typography, withStyles, withWidth} from "@material-ui/core";
 import classNames from "classnames";
-import Image from "./images/whatWeDo.jpg";
 import {alphaHex} from "../../../shared/functions/alphaHex";
 import GradientTypography from "../../../shared/components/GradientTypography";
-import Card from "@material-ui/core/Card";
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Avatar from '@material-ui/core/Avatar';
 import ImageBeginner from "./images/imageBeginner.png";
 import ImageIntermediate from "./images/imageIntermediate.png";
@@ -76,45 +72,46 @@ const styles = (theme) => ({
         marginLeft: "60px",
         marginRight: "60px",
         marginBottom: "24px"
-      },
+    },
     div: {
         borderRadius: "10px",
         marginTop: "60px",
         position: "absolute",
-        zIndex: -1, 
+        zIndex: -1,
         width: "980px",
         height: "250px",
-        background: "linear-gradient(303.91deg, #8A8AF4 7.57%, #3984DD 94.39%)" ,
+        background: "linear-gradient(303.91deg, #8A8AF4 7.57%, #3984DD 94.39%)",
         right: 0,
         top: 0
     }
 });
 
 
-function InvestorImage (classes, level, img){
-    return(
-    <div className={classNames(classes.rightWrapper)}>
-                            <Grid item
-                                container
-                                style = {{width: "auto", marginLeft: "0px", marginRight:"15px"} }
-                            >
-                                <Paper elevation={24}  style = {{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}}>
-                                <Avatar src = {img} className={classes.large} />
-                
-                                <Typography variant="h6"
-                                            color="textSecondary"
-                                            style={{fontWeight: 400}}>
-                                    {level}
-                                </Typography>
-                                <ButtonBase disableRipple className={classes.button}>
-                                    <GradientTypography variant="h6">
-                                        ⯈
-                                    </GradientTypography>
-                                </ButtonBase>
+function InvestorImage(classes, level, img) {
+    return (
+        <div className={classNames(classes.rightWrapper)}>
+            <Grid item
+                  container
+                  style={{width: "auto", marginLeft: "0px", marginRight: "15px"}}
+            >
+                <Paper elevation={24}
+                       style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}}>
+                    <Avatar src={img} className={classes.large}/>
 
-                                </Paper>
-                            </Grid>
-                        </div>)
+                    <Typography variant="h6"
+                                color="textSecondary"
+                                style={{fontWeight: 400}}>
+                        {level}
+                    </Typography>
+                    <ButtonBase disableRipple className={classes.button}>
+                        <GradientTypography variant="h6">
+                            ⯈
+                        </GradientTypography>
+                    </ButtonBase>
+
+                </Paper>
+            </Grid>
+        </div>)
 }
 
 const InvestorRanks = ({classes, width, img}) => {
@@ -123,15 +120,15 @@ const InvestorRanks = ({classes, width, img}) => {
         <div style={{backgroundColor: "#FFFFFF"}}>
             <Box display="flex" justifyContent="space-between"
                  className={classNames(classes.containerFix, "container")}>
-                     
+
                 <Grid container spacing={7}>
-                    
+
                     <Grid item
                           container
                           data-aos={
                               isWidthUp("md", width) ? "fade-left" : "zoom-in"
                           }
-                          style = {{width:"400px", marginRoght: "50px"}}
+                          style={{width: "400px", marginRoght: "50px"}}
                     >
                         <div className={classNames(classes.rightWrapper)}>
                             <Grid
@@ -156,13 +153,13 @@ const InvestorRanks = ({classes, width, img}) => {
                             </Grid>
                         </div>
                     </Grid>
-                    
+
                     <Grid item
                           container
                           direction="row"
                           justify="center"
-                            alignItems="center"
-                          xs={200} md={8}
+                          alignItems="center"
+                          xs={12} md={8}
                           data-aos={
                               isWidthUp("md", width) ? "fade-left" : "zoom-in"
                           }
@@ -172,10 +169,10 @@ const InvestorRanks = ({classes, width, img}) => {
                         {InvestorImage(classes, "С ОПЫТОМ", ImageIntermediate)}
                         {InvestorImage(classes, "ЭКСПЕРТ", ImageAdvanced)}
 
-                        
+
                     </Grid>
 
-                    
+
                 </Grid>
             </Box>
         </div>

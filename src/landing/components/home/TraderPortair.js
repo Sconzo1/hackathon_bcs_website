@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Grid, Typography, withStyles, withWidth} from "@material-ui/core";
-import {alphaHex} from "../../../shared/functions/alphaHex";
 import GradientTypography from "../../../shared/components/GradientTypography";
 
 

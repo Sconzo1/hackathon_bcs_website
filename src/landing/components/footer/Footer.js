@@ -144,9 +144,8 @@ const Footer = ({classes, theme, width, refFooter}) => {
                     <Grid item md={5}>
                         <Box display="flex">
                             {menuItems.map((element, index) => (
-                                    <Box mr={index !== menuItems.length - 1 ? 5 : 0}>
+                                    <Box key={element.name} mr={index !== menuItems.length - 1 ? 5 : 0}>
                                         <Link
-                                            key={element.name}
                                             to={element.link}
                                             className={classes.noDecoration}
                                         >

@@ -1,50 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Typography from '@material-ui/core/Typography';
-import { purple } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
-      margin: theme.spacing(1),
+        margin: theme.spacing(1),
     },
     extendedIcon: {
-      marginRight: theme.spacing(1),
+        marginRight: theme.spacing(1),
     },
-  }));
-  
+}));
+
 
 const ColoredTypography = withStyles({
     root: {
-      color: "#4a4a4a"
+        color: "#4a4a4a"
     }
-  })(Typography);
+})(Typography);
 
 
-
-
-  
-
-function Currency ({onCurrencyChanged}){
+function Currency({onCurrencyChanged}) {
     const classes = useStyles();
     const [currencyStyle, setCurrencyStyle] = useState("contained");
-    
 
-    return(
+
+    return (
         <div>
-            <ColoredTypography  gutterBottom>Выберите валюту
-            
+            <ColoredTypography gutterBottom>Выберите валюту
+
             </ColoredTypography>
 
             <ButtonGroup color="secondary" aria-label="outlined primary button group">
-                <Button variant={currencyStyle} 
-                        onClick={()=> {setCurrencyStyle("contained");
-                                        onCurrencyChanged("₽")} }>₽</Button>
-                <Button variant={(currencyStyle === "contained") ? "outlined": "contained"} 
-                        onClick={()=> {setCurrencyStyle("outlined")
-                        onCurrencyChanged("$")}}>$</Button>
-            </ButtonGroup>       
+                <Button variant={currencyStyle}
+                        onClick={() => {
+                            setCurrencyStyle("contained");
+                            onCurrencyChanged("₽")
+                        }}>₽</Button>
+                <Button variant={(currencyStyle === "contained") ? "outlined" : "contained"}
+                        onClick={() => {
+                            setCurrencyStyle("outlined")
+                            onCurrencyChanged("$")
+                        }}>$</Button>
+            </ButtonGroup>
         </div>
     )
 }

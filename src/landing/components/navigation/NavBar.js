@@ -67,17 +67,17 @@ const NavBar = ({
         },
         {
             link: "/",
-            name: "Обучение",
+            name: "Сервисы",
             icon: <AssignmentIndIcon className="text-white" />
         },
         {
             link: "/",
-            name: "Профессионалам",
+            name: "Обучение",
             icon: <HowToRegIcon className="text-white" />
         },
         {
             link: "/",
-            name: "Банк",
+            name: "Калькулятор доходности",
             icon: <AccountBalanceIcon className="text-white" />
         },
         // {

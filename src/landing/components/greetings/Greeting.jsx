@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth, IconButton } from "@material-ui/core";
 import classNames from "classnames";
-import { alphaHex } from "../../../shared/functions/alphaHex";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import PlayCircleFilledWhiteRoundedIcon from '@material-ui/icons/PlayCircleFilledWhiteRounded';
 import Image from "../../../images/guy_background.png";
@@ -16,10 +15,6 @@ const styles = (theme) => ({
     rightWrapper: {
         paddingBottom: theme.spacing(12),
         paddingTop: theme.spacing(12),
-    },
-    wrapperIcons: {
-        paddingBottom: theme.spacing(4),
-        paddingTop: theme.spacing(8),
     },
     infoIcon: {
         padding: '12px',
@@ -47,17 +42,6 @@ const styles = (theme) => ({
         [theme.breakpoints.up("md")]: {
             maxWidth: "none !important",
         },
-    },
-    iconWrapper: {
-        color: theme.palette.secondary.main,
-        backgroundColor: alphaHex(theme.palette.secondary.main, 0.2),
-        borderRadius: theme.shape.borderRadius,
-        textAlign: "center",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: theme.spacing(1.3),
-        boxShadow: theme.shadows[1]
     }
 });
 

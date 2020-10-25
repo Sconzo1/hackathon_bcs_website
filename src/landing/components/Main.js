@@ -26,21 +26,14 @@ const styles = (theme) => ({
 const Main = ({classes}) => {
     const [selectedTab, setSelectedTab] = useState(null);
     const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
-    const [newsPosts, setNewsPosts] = useState([]);
     const [dialogOpen, setDialogOpen] = useState(null);
     const [isCookieRulesDialogOpen, setIsCookieRulesDialogOpen] = useState(false);
 
     const selectHome = useCallback(() => {
         smoothScrollTop();
         document.title =
-            "FFF for BCS hackathon";
+            "LPI for BCS hackathon";
         setSelectedTab("Home");
-    }, [setSelectedTab]);
-
-    const selectNews = useCallback(() => {
-        smoothScrollTop();
-        document.title = "Блог - nEdu";
-        setSelectedTab("News");
     }, [setSelectedTab]);
 
     const openLoginDialog = useCallback(() => {
@@ -81,36 +74,6 @@ const Main = ({classes}) => {
         setIsCookieRulesDialogOpen(false);
     }, [setIsCookieRulesDialogOpen]);
 
-    function getNews() {
-        axios.post('http://project/bin/index.php', {operation: "getNews"})
-            .then(response => {
-                if (response.data.result === "success") {
-                    if (response.data.news.length !== 0) {
-                        const temp = response.data.news.map((element, i) => ({
-                            title: element.title,
-                            id: element.id_news,
-                            date: element.date,
-                            importImage: element.image,
-                            snippet: element.content.split(' ').slice(0, 6).join(" ") + "...",
-                            content: element.content,
-                            url: `/news/post/${urlRusLat(element.title)}`,
-                            params: `?id=${element.id_news}`
-                        }));
-
-                        setNewsPosts(temp);
-                    }
-                } else {
-                    alert("ERROR");
-                    console.log("Ошибка");
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-
-    useEffect(getNews, []);
-
     const refFooter = useRef();
 
     return (
@@ -141,10 +104,8 @@ const Main = ({classes}) => {
                 handleMobileDrawerClose={handleMobileDrawerClose}
             />
             <Routing
-                newsPosts={newsPosts}
                 selectHome={selectHome}
                 refFooter={refFooter}
-                selectNews={selectNews}
             />
             <Footer refFooter={refFooter}/>
         </div>

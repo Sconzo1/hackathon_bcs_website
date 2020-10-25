@@ -4,7 +4,7 @@ import {Box, Grid, Hidden, IconButton, isWidthUp, Typography, withStyles, withWi
 import classNames from "classnames";
 import GradientTypography from "../../../shared/components/GradientTypography";
 import PlayCircleFilledWhiteRoundedIcon from '@material-ui/icons/PlayCircleFilledWhiteRounded';
-import Image from "../../../images/guy_background.png";
+import Image from "./images/guy_background.png";
 
 
 const styles = (theme) => ({

@@ -64,7 +64,6 @@ function findIISIncome(investmentSum, monthlyPayment, period, rate) {
 function Evaluation({currency, investmentSum, monthlyPayment, period, rate}) {
     const classes = useStyles();
 
-
     return (
         <Grid item>
             <div className={classes.root}>

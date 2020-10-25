@@ -38,7 +38,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Evaluation({currency, investmentSum, monthlyPayment, period}) {
+function numberWithSpaces(x) {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return parts.join(".");
+}
+
+function findFutureSum(investmentSum, monthlyPayment, period, rate) {
+ return (investmentSum * Math.pow(1 + rate / 12, period) + 12 / rate * monthlyPayment * (Math.pow(1 + rate / 12, period)-1))
+}
+
+function findPureIncome(investmentSum, monthlyPayment, period, rate){
+  return findFutureSum(investmentSum, monthlyPayment, period, rate) - investmentSum
+}
+
+
+function findIISIncome(investmentSum, monthlyPayment, period, rate){
+  if (investmentSum > 400000){
+    return 52000 * Math.floor(period/12) + findPureIncome(investmentSum, monthlyPayment, period, rate)
+  }
+  else {
+    return 0.13 * investmentSum * Math.floor(period/12) + findPureIncome(investmentSum, monthlyPayment, period, rate)
+  }
+}
+
+function Evaluation({currency, investmentSum, monthlyPayment, period, rate}) {
     const classes = useStyles();
 
 
@@ -46,14 +70,14 @@ function Evaluation({currency, investmentSum, monthlyPayment, period}) {
         <Grid item>
             <div className={classes.root}>
                 <GradientTypography variant="h4" color="secondary" gutterBottom>
-                    Накоплю к октябрю 2025 года
+                    Накоплю к октябрю {2020 + Math.floor(period/12)} года
                 </GradientTypography>
                 <div>
                     <Grid container spacing={4}>
-                        {labelValue("Ожидаемая стоимость портфеля", `${(investmentSum * Math.pow(1 + 0.07 / 12, period)).toFixed(2)} ${currency}`, 5)}
-                        {labelValue("Ожидаемый доход с учетом комиссии", `${(investmentSum * Math.pow(1 + 0.07 / 12, period) - investmentSum).toFixed(2)} ${currency}`, 5)}
-                        {labelValue("Доход с ИИС", `+ ${500} ${currency}`, 2)}
-                        {labelValue("Ожидаемая доходность", `${((investmentSum * Math.pow(1 + 0.07 / 12, period) - investmentSum) / investmentSum * 100).toFixed(2)} %`, 5)}
+                        {labelValue("Ожидаемая стоимость портфеля", `${numberWithSpaces(findFutureSum(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
+                        {labelValue("Ожидаемый доход с учетом комиссии", `${numberWithSpaces(findPureIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
+                        {labelValue("Доход с ИИС", `${numberWithSpaces(findIISIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 2)}
+                        {labelValue("Ожидаемая доходность", `${numberWithSpaces((findPureIncome(investmentSum, monthlyPayment, period, rate)  / investmentSum * 100).toFixed(2))} %`, 5)}
                         {labelValue("Историческая доходность", `${60} %`, 5)}
                     </Grid>
                 </div>

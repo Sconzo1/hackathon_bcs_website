@@ -61,6 +61,11 @@ function AirbnbThumbComponent(props) {
     );
 }
 
+function numberWithSpaces(x) {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return parts.join(".");
+}
 
 function SingleSlider({name, min, max, step, currency, value, onChanged}) {
     const [initialSum, setinitialSum] = useState(min);
@@ -76,7 +81,7 @@ function SingleSlider({name, min, max, step, currency, value, onChanged}) {
 
             <ColoredTypography component="div">
                 <Box fontWeight="fontWeightBold" fontSize={21}>
-                    {value} {currency}
+                    {numberWithSpaces(value)} {currency}
                 </Box>
             </ColoredTypography>
 

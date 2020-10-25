@@ -13,40 +13,15 @@ import Offers from "./Offers";
 import ImageBeginner from "./images/imageBeginner.png";
 import ImageIntermediate from "./images/imageIntermediate.png";
 import ImageAdvanced from "./images/imageAdvanced.png";
+import traders from './Traders/Traders'
 
 
 const Home = ({selectHome, refFooter, width}) => {
-    const [traderImage, setTraderImage] = useState(ImageBeginner)
-    const [traderName, setTraderName] = useState('Начинающий')
-    const [traderDescription, setTraderDescription] = useState(`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
-    дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
-    финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
-    стоимости акций, преобладающих в их портфеле.
-    Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`)
+    const [trader, setTrader] = useState(traders[0])
+    
 
-    const onTraderChanged = (img, name, discr ) =>{
-        setTraderImage(img)
-        setTraderName(name)
-
-        switch (name){
-            case "Начинающий":
-                setTraderDescription(`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
-                дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
-                финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
-                стоимости акций, преобладающих в их портфеле.
-                Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`)
-                break;
-            case "Опытный":
-                setTraderDescription(`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
-                дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
-                финансовых процессов, .`)
-                break;
-            case "Эксперт":
-                setTraderDescription(`
-                    стоимости акций, преобладающих в их портфеле.
-                    Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`)
-                break;
-        }
+    const onTraderChanged = (t) =>{
+        setTrader(t)
         
     }
 
@@ -76,9 +51,9 @@ const Home = ({selectHome, refFooter, width}) => {
             <InvestorRanks onTraderChanged = {onTraderChanged}/>
             <Calculator/>
             <TraderPortair
-                Image={traderImage}
-                TraderName={traderName}
-                TraderDescription={traderDescription}/>
+                Image={trader.IMAGE}
+                TraderName={trader.NAME}
+                TraderDescription={trader.DESCRIPTION}/>
             <Offers/>
             <InvestStart/>
         </Fragment>

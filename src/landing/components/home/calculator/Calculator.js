@@ -5,7 +5,6 @@ import Evaluation from './Predictions/Evaluation'
 import {Grid} from "@material-ui/core";
 
 
-
 function Calculator() {
     const [currency, setCurrency] = useState("₽")
     const [investmentSum, setInvestmentSum] = useState(10000)
@@ -32,11 +31,11 @@ function Calculator() {
         setPeriod(period)
         //calculate()
     }
-    
+
     const onRateChanged = (rate) => {
-      setRate(rate)
-      //calculate()
-  }
+        setRate(rate)
+        //calculate()
+    }
 
 
     function calculate() {
@@ -71,7 +70,7 @@ function Calculator() {
                     investmentSum={investmentSum}
                     monthlyPayment={monthlyPayment}
                     period={period}
-                    rate = {rate}
+                    rate={rate}
 
                 />
 

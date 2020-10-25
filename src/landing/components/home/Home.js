@@ -36,7 +36,6 @@ const Home = ({selectHome, refFooter, width}) => {
             <div ref={refTop}/>
             <Greeting/>
             <InvestmentsLife/>
-            <InvestStart/>
             <InvestorRanks/>
             <Calculator/>
             <TraderPortair
@@ -48,6 +47,7 @@ const Home = ({selectHome, refFooter, width}) => {
                 стоимости акций, преобладающих в их портфеле.
                 Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`}/>
             <Offers/>
+            <InvestStart/>
         </Fragment>
     );
 }

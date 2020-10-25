@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useRef} from "react";
+import React, {Fragment, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import InvestmentsLife from "./InvestmentsLife";
 import InvestStart from "./InvestStart";
@@ -10,9 +10,46 @@ import TraderPortair from "./TraderPortair";
 import Calculator from "./calculator/Calculator";
 import InvestorRanks from './InvestorRanks';
 import Offers from "./Offers";
+import ImageBeginner from "./images/imageBeginner.png";
+import ImageIntermediate from "./images/imageIntermediate.png";
+import ImageAdvanced from "./images/imageAdvanced.png";
 
 
 const Home = ({selectHome, refFooter, width}) => {
+    const [traderImage, setTraderImage] = useState(ImageBeginner)
+    const [traderName, setTraderName] = useState('Начинающий')
+    const [traderDescription, setTraderDescription] = useState(`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
+    дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
+    финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
+    стоимости акций, преобладающих в их портфеле.
+    Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`)
+
+    const onTraderChanged = (img, name, discr ) =>{
+        setTraderImage(img)
+        setTraderName(name)
+
+        switch (name){
+            case "Начинающий":
+                setTraderDescription(`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
+                дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
+                финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
+                стоимости акций, преобладающих в их портфеле.
+                Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`)
+                break;
+            case "Опытный":
+                setTraderDescription(`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
+                дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
+                финансовых процессов, .`)
+                break;
+            case "Эксперт":
+                setTraderDescription(`
+                    стоимости акций, преобладающих в их портфеле.
+                    Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`)
+                break;
+        }
+        
+    }
+
     const refTop = useRef();
 
     useEffect(() => {
@@ -36,16 +73,12 @@ const Home = ({selectHome, refFooter, width}) => {
             <div ref={refTop}/>
             <Greeting/>
             <InvestmentsLife/>
-            <InvestorRanks/>
+            <InvestorRanks onTraderChanged = {onTraderChanged}/>
             <Calculator/>
             <TraderPortair
-                Image={TraderBeginner}
-                TraderName={'Начинающий инвестор'}
-                TraderDescription={`Из-за неопытности и небольшого капитала вкладываются в небольшой круг 
-                дешевых акций. Не имеют возможности или желания рисковать. Не знают тонкости основных 
-                финансовых процессов, поэтому совершают много ошибок и подвержены панике при падении 
-                стоимости акций, преобладающих в их портфеле.
-                Следующие стратегии позволят достигнуть желаемого и избежать ошибок большинства новичков.`}/>
+                Image={traderImage}
+                TraderName={traderName}
+                TraderDescription={traderDescription}/>
             <Offers/>
             <InvestStart/>
         </Fragment>

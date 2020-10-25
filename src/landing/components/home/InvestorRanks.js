@@ -72,7 +72,7 @@ const styles = (theme) => ({
 });
 
 
-function InvestorImage(classes, level, img) {
+function InvestorImage(classes, level, img, onTraderChanged) {
     return (
         <div className={classNames(classes.rightWrapper)}>
             <Grid item
@@ -80,7 +80,8 @@ function InvestorImage(classes, level, img) {
                   style={{width: "auto", marginLeft: "0px", marginRight: "15px"}}
             >
                 <Paper elevation={24}
-                       style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}}>
+                       style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "24px"}} onClick={()=>
+                        onTraderChanged(img, level)}>
                     <Avatar src={img} className={classes.large}/>
 
                     <Typography variant="h6"
@@ -99,7 +100,7 @@ function InvestorImage(classes, level, img) {
         </div>)
 }
 
-const InvestorRanks = ({classes, width}) => {
+const InvestorRanks = ({classes, width, onTraderChanged}) => {
 
     return (
         <div className="lg-mg-top" style={{backgroundColor: "#FFFFFF"}}>
@@ -150,9 +151,9 @@ const InvestorRanks = ({classes, width}) => {
                           }
                     >
                         <div className={classes.div}/>
-                        {InvestorImage(classes, "НАЧИНАЮЩИЙ", ImageBeginner)}
-                        {InvestorImage(classes, "С ОПЫТОМ", ImageIntermediate)}
-                        {InvestorImage(classes, "ЭКСПЕРТ", ImageAdvanced)}
+                        {InvestorImage(classes, "Начинающий", ImageBeginner, onTraderChanged)}
+                        {InvestorImage(classes, "Опытный", ImageIntermediate, onTraderChanged)}
+                        {InvestorImage(classes, "Эксперт", ImageAdvanced, onTraderChanged)}
 
 
                     </Grid>

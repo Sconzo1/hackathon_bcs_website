@@ -1,9 +1,10 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 const ColoredTypography = withStyles({
@@ -55,10 +56,10 @@ const AirbnbSlider = withStyles({
 function AirbnbThumbComponent(props) {
     return (
         <span {...props}>
-      <span className="bar"/>
-      <span className="bar"/>
-      <span className="bar"/>
-    </span>
+            <span className="bar" />
+            <span className="bar" />
+            <span className="bar" />
+        </span>
     );
 }
 
@@ -100,7 +101,7 @@ const BootstrapButton = withStyles({
 })(Button);
 
 
-function SingleSliderDuration({name, min, max, step, currency, value, onChanged}) {
+function SingleSliderDuration({ name, min, max, step, currency, value, onChanged }) {
 
 
     return (
@@ -124,33 +125,43 @@ function SingleSliderDuration({name, min, max, step, currency, value, onChanged}
                 min={min}
                 max={max}
             />
-            <div>
-                <BootstrapButton onClick={() => {
-                    onChanged(12)
-                }}>
-                    1 год
-                </BootstrapButton>
-                <BootstrapButton onClick={() => {
-                    onChanged(24)
-                }}>
-                    2 года
-                </BootstrapButton>
-                <BootstrapButton onClick={() => {
-                    onChanged(36)
-                }}>
-                    3 года
-                </BootstrapButton>
-                <BootstrapButton onClick={() => {
-                    onChanged(48)
-                }}>
-                    4 года
-                </BootstrapButton>
-                <BootstrapButton onClick={() => {
-                    onChanged(60)
-                }}>
-                    5 лет
-                </BootstrapButton>
-            </div>
+            <Grid container direction='row' justify="space-evenly">
+                <Grid item>
+                    <BootstrapButton onClick={() => {
+                        onChanged(12)
+                    }}>
+                        1 год
+                    </BootstrapButton>
+                </Grid>
+                <Grid item>
+                    <BootstrapButton onClick={() => {
+                        onChanged(24)
+                    }}>
+                        2 года
+                    </BootstrapButton>
+                </Grid>
+                <Grid item>
+                    <BootstrapButton onClick={() => {
+                        onChanged(36)
+                    }}>
+                        3 года
+                    </BootstrapButton>
+                </Grid>
+                <Grid item>
+                    <BootstrapButton onClick={() => {
+                        onChanged(48)
+                    }}>
+                        4 года
+                    </BootstrapButton>
+                </Grid>
+                <Grid item>
+                    <BootstrapButton onClick={() => {
+                        onChanged(60)
+                    }}>
+                        5 лет
+                    </BootstrapButton>
+                </Grid>
+            </Grid>
         </div>
     )
 }

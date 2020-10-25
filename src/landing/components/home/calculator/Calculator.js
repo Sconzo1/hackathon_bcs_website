@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import CalcSlider from './Sliders/CalcSlider'
 import Evaluation from './Predictions/Evaluation'
 
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 
 function Calculator() {
@@ -55,26 +55,28 @@ function Calculator() {
     return (
         <div>
             <Grid container justify="center">
-                <CalcSlider
-                    currency={currency}
-                    investmentSum={investmentSum}
-                    monthlyPayment={monthlyPayment}
-                    period={period}
-                    onCurrencyChanged={onCurrencyChanged}
-                    onInvestmentSumChanged={onInvestmentSumChanged}
-                    onMonthlyPaymentChanged={onMonthlyPaymentChanged}
-                    onPeriodChanged={onPeriodChanged}
-                />
-                <Evaluation
-                    currency={currency}
-                    investmentSum={investmentSum}
-                    monthlyPayment={monthlyPayment}
-                    period={period}
-                    rate={rate}
+                <Grid item>
+                    <CalcSlider
+                        currency={currency}
+                        investmentSum={investmentSum}
+                        monthlyPayment={monthlyPayment}
+                        period={period}
+                        onCurrencyChanged={onCurrencyChanged}
+                        onInvestmentSumChanged={onInvestmentSumChanged}
+                        onMonthlyPaymentChanged={onMonthlyPaymentChanged}
+                        onPeriodChanged={onPeriodChanged}
+                    />
+                </Grid>
 
-                />
-
-
+                <Grid item>
+                    <Evaluation
+                        currency={currency}
+                        investmentSum={investmentSum}
+                        monthlyPayment={monthlyPayment}
+                        period={period}
+                        rate={rate}
+                    />
+                </Grid>
             </Grid>
 
         </div>

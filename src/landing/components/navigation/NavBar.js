@@ -95,7 +95,7 @@ const NavBar = ({
         },
         {
             link: "/",
-            name: "Калькулятор доходности",
+            name: "Калькулятор",
             icon: <AccountBalanceIcon className="text-white" />
         },
         // {
@@ -111,7 +111,7 @@ const NavBar = ({
 
     return (
         <div className={classes.root}>
-            <AppBar position="sticky" className={classes.appBar}>
+            <AppBar position="static" className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Link
                         to="/"
@@ -165,6 +165,9 @@ const NavBar = ({
                                             onClick={element.onClick}
                                             classes={{ text: classes.menuButtonText }}
                                             key={element.name}
+                                            style={{
+                                                marginLeft: 24
+                                            }}
                                         >
                                             {element.name}
                                         </Button>

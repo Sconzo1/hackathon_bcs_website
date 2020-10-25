@@ -8,13 +8,11 @@ import Image from "../../../images/guy_background.png";
 
 
 const styles = (theme) => ({
-    imageContainer: {
-    },
     image: {
-    },
-    rightWrapper: {
-        paddingBottom: theme.spacing(12),
-        paddingTop: theme.spacing(12),
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
+        objectPosition: "center bottom"
     },
     infoIcon: {
         padding: '12px',
@@ -24,19 +22,6 @@ const styles = (theme) => ({
         "&:hover": {
             background: `linear-gradient(90deg, #8A8AF4 100%, #3984DD 0%) !important`
         }
-    },
-    container: {
-        marginTop: theme.spacing(6),
-        marginBottom: theme.spacing(12),
-        [theme.breakpoints.down("md")]: {
-            marginBottom: theme.spacing(9),
-        },
-        [theme.breakpoints.down("sm")]: {
-            marginBottom: theme.spacing(6),
-        },
-        [theme.breakpoints.down("sm")]: {
-            marginBottom: theme.spacing(3),
-        },
     },
     containerFix: {
         [theme.breakpoints.up("md")]: {
@@ -48,7 +33,7 @@ const styles = (theme) => ({
 const Greeting = ({ classes, width }) => {
 
     return (
-        <div style={{ backgroundColor: "#FFFFFF" }}>
+        <div className="lg-mg-top lg-mg-bottom" style={{ backgroundColor: "#FFFFFF" }}>
             <Box display="flex" justifyContent="space-between"
                 className={classNames(classes.containerFix, "container")}>
                 <Grid container spacing={6}>
@@ -60,7 +45,7 @@ const Greeting = ({ classes, width }) => {
                             isWidthUp("md", width) ? "fade-left" : "zoom-in"
                         }
                     >
-                        <div className={classNames(classes.rightWrapper)}>
+                        <div>
                             <Grid
                                 container
                                 direction="column"
@@ -97,7 +82,6 @@ const Greeting = ({ classes, width }) => {
                     <Hidden smDown>
                         <Grid item md={6}
                             data-aos="fade-right"
-                            className={classes.imageContainer}
                         >
                             <img className={classes.image} src={Image} alt="" />
                         </Grid>

@@ -16,6 +16,8 @@ import withWidth from "@material-ui/core/withWidth";
 import Greeting from "./Greeting";
 import TraderBeginner from './images/TraderBeginner.png';
 import TraderPortair from "./TraderPortair";
+import Calculator from "./calculator/Calculator"
+import InvestorRanks from './InvestorRanks'
 
 
 const Home = ({ selectHome, refFooter, width }) => {
@@ -44,6 +46,8 @@ const Home = ({ selectHome, refFooter, width }) => {
             <Greeting />
             <InvestmentsLife/>
             <InvestStart/>
+            <InvestorRanks/>
+            <Calculator />
             {/*<OurEfficiency/>*/}
             {/*<Features/>*/}
             {/*<Testimonials/>*/}

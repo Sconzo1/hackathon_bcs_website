@@ -18,7 +18,7 @@ import GradientTypography from "../../../shared/components/GradientTypography";
 
 const styles = theme => ({
     appBar: {
-        boxShadow: theme.shadows[6],
+        boxShadow: 'none',
         backgroundColor: theme.palette.common.white
     },
     toolbar: {

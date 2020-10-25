@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Box, Grid, makeStyles, Typography, withStyles} from "@material-ui/core";
+import { Box, Grid, makeStyles, Typography, withStyles } from "@material-ui/core";
 import GradientTypography from "../../../../../shared/components/GradientTypography";
 
 
@@ -13,7 +13,7 @@ const ColoredTypography = withStyles({
 
 const labelValue = (label, value, xs) => {
     return (
-        <Grid item xs={xs} style={{marginTop: "22px"}}>
+        <Grid item xs={xs} style={{ marginTop: "22px" }}>
             <ColoredTypography gutterBottom>{label}</ColoredTypography>
 
             <ColoredTypography component="div">
@@ -22,7 +22,7 @@ const labelValue = (label, value, xs) => {
                 </Box>
             </ColoredTypography>
 
-            <div/>
+            <div />
         </Grid>
     )
 }
@@ -61,28 +61,24 @@ function findIISIncome(investmentSum, monthlyPayment, period, rate) {
     }
 }
 
-function Evaluation({currency, investmentSum, monthlyPayment, period, rate}) {
+function Evaluation({ currency, investmentSum, monthlyPayment, period, rate }) {
     const classes = useStyles();
 
     return (
-        <Grid item>
-            <div className={classes.root}>
-                <GradientTypography variant="h4" color="secondary" gutterBottom>
-                    Накоплю к октябрю {2020 + Math.floor(period / 12)} года
+        <div className={classes.root}>
+            <GradientTypography variant="h4" color="secondary" gutterBottom>
+                Накоплю к октябрю {2020 + Math.floor(period / 12)} года
                 </GradientTypography>
-                <div>
-                    <Grid container>
-                        {labelValue("Ожидаемая стоимость портфеля", `${numberWithSpaces(findFutureSum(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
-                        {labelValue("Ожидаемый доход с учетом комиссии", `${numberWithSpaces(findPureIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
-                        {labelValue("Доход с ИИС", `${numberWithSpaces(findIISIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 2)}
-                        {labelValue("Ожидаемая доходность", `${numberWithSpaces((findPureIncome(investmentSum, monthlyPayment, period, rate) / investmentSum * 100).toFixed(2))} %`, 5)}
-                        {labelValue("Историческая доходность", `${60} %`, 5)}
-                    </Grid>
-                </div>
+            <div>
+                <Grid container>
+                    {labelValue("Ожидаемая стоимость портфеля", `${numberWithSpaces(findFutureSum(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
+                    {labelValue("Ожидаемый доход с учетом комиссии", `${numberWithSpaces(findPureIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 5)}
+                    {labelValue("Доход с ИИС", `${numberWithSpaces(findIISIncome(investmentSum, monthlyPayment, period, rate).toFixed(2))} ${currency}`, 2)}
+                    {labelValue("Ожидаемая доходность", `${numberWithSpaces((findPureIncome(investmentSum, monthlyPayment, period, rate) / investmentSum * 100).toFixed(2))} %`, 5)}
+                    {labelValue("Историческая доходность", `${60} %`, 5)}
+                </Grid>
             </div>
-        </Grid>
-
-
+        </div>
     );
 }
 

@@ -32,7 +32,7 @@ function Currency({onCurrencyChanged}) {
 
             </ColoredTypography>
 
-            <ButtonGroup color="secondary" aria-label="outlined primary button group">
+            <ButtonGroup color="primary" aria-label="outlined primary button group">
                 <Button variant={currencyStyle}
                         onClick={() => {
                             setCurrencyStyle("contained");

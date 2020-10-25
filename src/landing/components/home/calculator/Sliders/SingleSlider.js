@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 
 
 const ColoredTypography = withStyles({
@@ -54,10 +55,10 @@ const AirbnbSlider = withStyles({
 function AirbnbThumbComponent(props) {
     return (
         <span {...props}>
-      <span className="bar"/>
-      <span className="bar"/>
-      <span className="bar"/>
-    </span>
+            <span className="bar" />
+            <span className="bar" />
+            <span className="bar" />
+        </span>
     );
 }
 
@@ -67,7 +68,7 @@ function numberWithSpaces(x) {
     return parts.join(".");
 }
 
-function SingleSlider({name, min, max, step, currency, value, onChanged}) {
+function SingleSlider({ name, min, max, step, currency, value, onChanged }) {
     const [initialSum, setinitialSum] = useState(min);
 
     const onInitialSumChanged = (e, val) => {
@@ -76,27 +77,35 @@ function SingleSlider({name, min, max, step, currency, value, onChanged}) {
 
 
     return (
-        <div>
-            <ColoredTypography gutterBottom>{name}</ColoredTypography>
+        <Grid container direction="column" justify="flex-start" alignItems="flex-start">
+            <Grid item>
+                <ColoredTypography gutterBottom>{name}</ColoredTypography>
+            </Grid>
 
-            <ColoredTypography component="div">
-                <Box fontWeight="fontWeightBold" fontSize={21}>
-                    {numberWithSpaces(value)} {currency}
-                </Box>
-            </ColoredTypography>
+            <Grid item>
+                <ColoredTypography component="div">
+                    <Box fontWeight="fontWeightBold" fontSize={21}>
+                        {numberWithSpaces(value)} {currency}
+                    </Box>
+                </ColoredTypography>
+            </Grid>
 
-            <AirbnbSlider
-                ThumbComponent={AirbnbThumbComponent}
-                valueLabelDisplay="auto"
-                defaultValue={min}
-                onChange={(e, val) => {
-                    onChanged(val)
-                }}
-                step={step}
-                min={min}
-                max={max}
-            />
-        </div>
+            <Grid item style={{width: '100%'}}>
+                <AirbnbSlider
+                    ThumbComponent={AirbnbThumbComponent}
+                    valueLabelDisplay="auto"
+                    defaultValue={min}
+                    onChange={(e, val) => {
+                        onChanged(val)
+                    }}
+                    step={step}
+                    min={min}
+                    max={max}
+                />
+            </Grid>
+
+
+        </Grid>
     )
 }
 

@@ -12,24 +12,12 @@ import InvestorRanks from './InvestorRanks';
 import Offers from "./Offers";
 
 
-const Home = ({selectHome, refFooter, width}) => {
+const Home = ({selectHome, openTermsDialog, width}) => {
     const refTop = useRef();
 
     useEffect(() => {
         selectHome();
     }, [selectHome]);
-
-    function getStopThreshold() {
-        if (isWidthDown("xs", width)) {
-            return 5400
-        } else if (isWidthDown("sm", width)) {
-            return 4700
-        } else if (isWidthDown("md", width)) {
-            return 4500
-        } else {
-            return 4450
-        }
-    }
 
     return (
         <Fragment>
@@ -54,8 +42,7 @@ const Home = ({selectHome, refFooter, width}) => {
 
 Home.propTypes = {
     selectHome: PropTypes.func.isRequired,
-    refFooter: PropTypes.object.isRequired,
-    width: PropTypes.string.isRequired
+    width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(Home);

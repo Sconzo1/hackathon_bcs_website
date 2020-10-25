@@ -49,16 +49,23 @@ const Offers = ({classes, width}) => {
 
     return (
         <div className="lg-mg-top lg-mg-bottom" style={{backgroundColor: "#FFFFFF"}}>
-            <Box display="flex" justifyContent="space-between"
-                 className={classNames(classes.containerFix, "container")}>
+            <Box className={classNames(classes.containerFix, "container")}>
                 <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                >
+                <Grid
+                    item
                     container
                     direction="row"
                     justify="space-between"
                     alignItems="center"
+                    md={10}
                 >
                     {cards.map((element, index) => (
-                            <Grid item md={3}
+                            <Grid item md={4}
                                   key={element.name}
                                   data-aos={
                                       isWidthUp("md", width) ? "fade-left" : "zoom-in"
@@ -72,6 +79,7 @@ const Offers = ({classes, width}) => {
                             </Grid>
                         )
                     )}
+                </Grid>
                 </Grid>
             </Box>
         </div>

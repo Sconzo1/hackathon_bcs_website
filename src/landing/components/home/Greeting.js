@@ -20,7 +20,7 @@ const styles = (theme) => ({
         color: `white`,
         background: "linear-gradient(90deg, #8A8AF4 0%, #3984DD 100%)",
         "&:hover": {
-            background: `linear-gradient(90deg, #8A8AF4 100%, #3984DD 0%) !important`
+            background: `linear-gradient(90deg, #8A8AF4 100%, #3984DD 0%)`
         }
     },
     containerFix: {

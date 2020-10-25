@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect, useRef, useState} from "react";
+import React, {memo, useCallback, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import AOS from "aos/dist/aos";
 import {withStyles} from "@material-ui/core";
@@ -7,11 +7,8 @@ import Footer from "./footer/Footer";
 import "aos/dist/aos.css";
 import CookieRulesDialog from "./cookies/CookieRulesDialog";
 import CookieConsent from "./cookies/CookieConsent";
-import DialogSelector from "./dialogs/DialogSelector";
 import Routing from "./Routing";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
-import urlRusLat from "../../shared/functions/urlRusLat";
-import axios from "axios";
 
 
 AOS.init({once: true});
@@ -36,24 +33,6 @@ const Main = ({classes}) => {
         setSelectedTab("Home");
     }, [setSelectedTab]);
 
-    const openLoginDialog = useCallback(() => {
-        setDialogOpen("login");
-        setIsMobileDrawerOpen(false);
-    }, [setDialogOpen, setIsMobileDrawerOpen]);
-
-    const closeDialog = useCallback(() => {
-        setDialogOpen(null);
-    }, [setDialogOpen]);
-
-    const openRegisterDialog = useCallback(() => {
-        setDialogOpen("register");
-        setIsMobileDrawerOpen(false);
-    }, [setDialogOpen, setIsMobileDrawerOpen]);
-
-    const openTermsDialog = useCallback(() => {
-        setDialogOpen("termsOfService");
-    }, [setDialogOpen]);
-
     const handleMobileDrawerOpen = useCallback(() => {
         setIsMobileDrawerOpen(true);
     }, [setIsMobileDrawerOpen]);
@@ -61,10 +40,6 @@ const Main = ({classes}) => {
     const handleMobileDrawerClose = useCallback(() => {
         setIsMobileDrawerOpen(false);
     }, [setIsMobileDrawerOpen]);
-
-    const openChangePasswordDialog = useCallback(() => {
-        setDialogOpen("changePassword");
-    }, [setDialogOpen]);
 
     const handleCookieRulesDialogOpen = useCallback(() => {
         setIsCookieRulesDialogOpen(true);
@@ -83,29 +58,18 @@ const Main = ({classes}) => {
                     handleCookieRulesDialogOpen={handleCookieRulesDialogOpen}
                 />
             )}
-            <DialogSelector
-                openLoginDialog={openLoginDialog}
-                dialogOpen={dialogOpen}
-                onClose={closeDialog}
-                openTermsDialog={openTermsDialog}
-                openRegisterDialog={openRegisterDialog}
-                openChangePasswordDialog={openChangePasswordDialog}
-            />
             <CookieRulesDialog
                 open={isCookieRulesDialogOpen}
                 onClose={handleCookieRulesDialogClose}
             />
             <NavBar
                 selectedTab={selectedTab}
-                openLoginDialog={openLoginDialog}
-                openRegisterDialog={openRegisterDialog}
                 mobileDrawerOpen={isMobileDrawerOpen}
                 handleMobileDrawerOpen={handleMobileDrawerOpen}
                 handleMobileDrawerClose={handleMobileDrawerClose}
             />
             <Routing
                 selectHome={selectHome}
-                refFooter={refFooter}
             />
             <Footer refFooter={refFooter}/>
         </div>

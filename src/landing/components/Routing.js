@@ -5,18 +5,16 @@ import PropsRoute from "../../shared/components/PropsRoute";
 import Home from "./home/Home";
 
 
-const Routing = ({selectHome, refFooter}) => {
+const Routing = ({selectHome, openTermsDialog}) => {
     return (
         <Switch>
-            <PropsRoute path="/" component={Home} selectHome={selectHome}
-                        refFooter={refFooter}/>)
+            <PropsRoute path="/" component={Home} selectHome={selectHome}/>)
         </Switch>
     );
 }
 
 Routing.propTypes = {
-    selectHome: PropTypes.func.isRequired,
-    refFooter: PropTypes.object.isRequired
+    selectHome: PropTypes.func.isRequired
 };
 
 export default memo(Routing);

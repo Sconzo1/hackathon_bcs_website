@@ -1,6 +1,16 @@
-import React, {useState} from "react";
+import React, {Fragment, useCallback, useState} from "react";
 import PropTypes from "prop-types";
-import {Box, Grid, TextField, Typography, withStyles, withWidth} from "@material-ui/core";
+import {
+    Box,
+    Dialog, DialogActions,
+    DialogContent,
+    DialogTitle,
+    Grid,
+    TextField,
+    Typography,
+    withStyles,
+    withWidth
+} from "@material-ui/core";
 import classNames from "classnames";
 import Card from "@material-ui/core/Card";
 import ColoredButton from "../../../shared/components/ColoredButton";
@@ -8,6 +18,10 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import Link from "@material-ui/core/Link";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import Button from "@material-ui/core/Button";
+import TermsOfServiceDialog from "../dialogs/TermsOfServiceDialog";
 
 
 const styles = (theme) => ({
@@ -57,12 +71,22 @@ const WhiteCheckbox = withStyles({
     checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const InvestmentsLife = ({classes, width, theme}) => {
+const InvestStart = ({classes, theme}) => {
 
-    const [open, setOpen] = useState(false)
+    const [openSnackbar, setOpenSnackbar] = useState(false)
     const [fullName, setFullName] = useState("")
     const [phone, setPhone] = useState("")
     const [checked, setChecked] = useState(false)
+
+    const [openTermsOfServiceDialog, setOpenTermsOfServiceDialog] = useState(false)
+
+    const handleTermsOfServiceDialogOpen = useCallback(() => {
+        setOpenTermsOfServiceDialog(true);
+    }, [setOpenTermsOfServiceDialog]);
+
+    const handleTermsOfServiceDialogClose = useCallback(() => {
+        setOpenTermsOfServiceDialog(false);
+    }, [setOpenTermsOfServiceDialog]);
 
     const handleToggle = () => {
         setChecked(prevState => !prevState)
@@ -71,109 +95,127 @@ const InvestmentsLife = ({classes, width, theme}) => {
         if (reason === 'clickaway') {
             return;
         }
-        setOpen(false);
+        setOpenSnackbar(false);
+    }
+
+
+    function sendEmail(e) {
+        e.preventDefault()
+
+        setOpenSnackbar(true)
     }
 
     return (
-        <div style={{backgroundColor: "#FFFFFF"}}>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
-                    Заявка отправлена
-                </MuiAlert>
-            </Snackbar>
-            <Box display="flex" justifyContent="space-between"
-                 className={classNames(classes.containerFix, "container-fluid lg-mg-top")}
-                 style={{
-                     paddingLeft: 0
-                 }}>
-                <Grid container>
-                    <Grid item md={11}
-                          data-aos="fade-right">
-                        <Card variant="outlined" className={classes.card}>
-                            <Grid container>
-                                <Grid md={1}/>
-                                <Grid md={4}>
-                                    <Typography variant="h5"
-                                                color="initial"
-                                                paragraph
-                                                style={{fontWeight: "bold"}}>
-                                        Начни инвестировать с нами уже сейчас
-                                    </Typography>
-                                    <form>
-                                        <Box display="flex" flexDirection="column">
-                                            <Box mb={1}>
-                                                <WhiteTextField
+        <Fragment>
+            <div style={{backgroundColor: "#FFFFFF"}}>
+                <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleClose}>
+                    <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
+                        Заявка отправлена
+                    </MuiAlert>
+                </Snackbar>
+                <Box display="flex" justifyContent="space-between"
+                     className={classNames(classes.containerFix, "container-fluid lg-mg-top")}
+                     style={{
+                         paddingLeft: 0
+                     }}>
+                    <Grid container>
+                        <Grid item md={11}
+                              data-aos="fade-right">
+                            <Card variant="outlined" className={classes.card}>
+                                <Grid container>
+                                    <Grid md={1}/>
+                                    <Grid md={4}>
+                                        <Typography variant="h5"
+                                                    color="initial"
+                                                    paragraph
+                                                    style={{fontWeight: "bold"}}>
+                                            Начни инвестировать с нами уже сейчас
+                                        </Typography>
+                                        <form onSubmit={sendEmail.bind(this)}>
+                                            <Box display="flex" flexDirection="column">
+                                                <Box mb={1}>
+                                                    <WhiteTextField
+                                                        variant="outlined"
+                                                        multiline
+                                                        placeholder="ФИО"
+                                                        inputProps={{"aria-label": "ФИО"}}
+                                                        InputProps={{
+                                                            className: classes.whiteBg
+                                                        }}
+                                                        rows={1}
+                                                        fullWidth
+                                                        required
+                                                        value={fullName}
+                                                        onChange={(e) => {
+                                                            setFullName(e.target.value)
+                                                        }}
+                                                    />
+                                                </Box>
+                                                <Box mb={2}>
+                                                    <WhiteTextField
+                                                        variant="outlined"
+                                                        multiline
+                                                        placeholder="Номер телефона"
+                                                        inputProps={{"aria-label": "Номер телефона"}}
+                                                        InputProps={{
+                                                            className: classes.whiteBg
+                                                        }}
+                                                        rows={1}
+                                                        fullWidth
+                                                        required
+                                                        value={phone}
+                                                        onChange={(e) => {
+                                                            setPhone(e.target.value)
+                                                        }}
+                                                    />
+                                                </Box>
+                                                <Box mb={2}>
+                                                    <FormControlLabel
+                                                        control={<WhiteCheckbox required checked={checked} onChange={handleToggle}/>}
+                                                        label={
+                                                            <Typography style={{
+                                                                color: "rgba(255, 255, 255, 0.8)",
+                                                            }}>Согласие на{" "}
+                                                                <Link
+                                                                    style={{
+                                                                        color: "rgba(255, 255, 255, 0.8)",
+                                                                        fontWeight: 300,
+                                                                        textDecoration: "underline"
+                                                                    }}
+                                                                    onClick={handleTermsOfServiceDialogOpen}>
+                                                                    обработку персональных данных
+                                                                </Link>
+                                                            </Typography>
+                                                        }
+                                                    />
+                                                </Box>
+                                                <ColoredButton
+                                                    color={theme.palette.common.white}
                                                     variant="outlined"
-                                                    multiline
-                                                    placeholder="ФИО"
-                                                    inputProps={{"aria-label": "ФИО"}}
-                                                    InputProps={{
-                                                        className: classes.whiteBg
-                                                    }}
-                                                    rows={1}
-                                                    fullWidth
-                                                    required
-                                                    value={fullName}
-                                                    onChange={(e) => {
-                                                        setFullName(e.target.value)
-                                                    }}
-                                                />
+                                                    type="submit"
+                                                >
+                                                    Оставить заявку
+                                                </ColoredButton>
                                             </Box>
-                                            <Box mb={2}>
-                                                <WhiteTextField
-                                                    variant="outlined"
-                                                    multiline
-                                                    placeholder="Номер телефона"
-                                                    inputProps={{"aria-label": "Номер телефона"}}
-                                                    InputProps={{
-                                                        className: classes.whiteBg
-                                                    }}
-                                                    rows={1}
-                                                    fullWidth
-                                                    required
-                                                    value={phone}
-                                                    onChange={(e) => {
-                                                        setPhone(e.target.value)
-                                                    }}
-                                                />
-                                            </Box>
-                                            <Box mb={2}>
-                                                <FormControlLabel
-                                                    control={<WhiteCheckbox checked={checked} onChange={handleToggle}
-                                                                            name="checkedG"/>}
-                                                    label={
-                                                        <Typography style={{
-                                                            color: "rgba(255, 255, 255, 0.8)",
-                                                        }}>
-                                                            Согласие на обработку персональных данных
-                                                        </Typography>
-                                                    }
-                                                />
-                                            </Box>
-                                            <ColoredButton
-                                                color={theme.palette.common.white}
-                                                variant="outlined"
-                                                type="submit"
-                                            >
-                                                Оставить заявку
-                                            </ColoredButton>
-                                        </Box>
-                                    </form>
+                                        </form>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Card>
+                            </Card>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
-        </div>
+                </Box>
+            </div>
+            <TermsOfServiceDialog open={openTermsOfServiceDialog} onClose={handleTermsOfServiceDialogClose}/>
+
+        </Fragment>
     );
 }
 
-InvestmentsLife.propTypes = {
+InvestStart.propTypes = {
     classes: PropTypes.object.isRequired,
-    width: PropTypes.string.isRequired
+    width: PropTypes.string.isRequired,
 };
 
 export default withWidth()(
-    withStyles(styles, {withTheme: true})(InvestmentsLife)
+    withStyles(styles, {withTheme: true})(InvestStart)
 );

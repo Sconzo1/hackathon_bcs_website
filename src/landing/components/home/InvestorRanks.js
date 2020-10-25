@@ -23,10 +23,6 @@ const styles = (theme) => ({
         paddingBottom: theme.spacing(12),
         paddingTop: theme.spacing(12),
     },
-    wrapperIcons: {
-        paddingBottom: theme.spacing(4),
-        paddingTop: theme.spacing(8),
-    },
     container: {
         marginTop: theme.spacing(6),
         marginBottom: theme.spacing(12),
@@ -44,17 +40,6 @@ const styles = (theme) => ({
         [theme.breakpoints.up("md")]: {
             maxWidth: "none !important",
         },
-    },
-    iconWrapper: {
-        color: theme.palette.secondary.main,
-        backgroundColor: alphaHex(theme.palette.secondary.main, 0.2),
-        borderRadius: theme.shape.borderRadius,
-        textAlign: "center",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: theme.spacing(1.3),
-        boxShadow: theme.shadows[1]
     },
     card: {
         float: "left",
@@ -114,10 +99,10 @@ function InvestorImage(classes, level, img) {
         </div>)
 }
 
-const InvestorRanks = ({classes, width, img}) => {
+const InvestorRanks = ({classes, width}) => {
 
     return (
-        <div style={{backgroundColor: "#FFFFFF"}}>
+        <div className="lg-mg-top" style={{backgroundColor: "#FFFFFF"}}>
             <Box display="flex" justifyContent="space-between"
                  className={classNames(classes.containerFix, "container")}>
 
@@ -171,8 +156,6 @@ const InvestorRanks = ({classes, width, img}) => {
 
 
                     </Grid>
-
-
                 </Grid>
             </Box>
         </div>

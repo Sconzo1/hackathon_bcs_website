@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Dialog, DialogActions, DialogContent, DialogTitle, Typography, withStyles} from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ColoredButton from "../../../shared/components/ColoredButton";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
     termsConditionsListitem: {
@@ -20,8 +21,8 @@ const styles = theme => ({
     }
 });
 
-const TermsOfServiceDialog = ({classes, onClose, theme}) => (
-    <Dialog open={true} scroll="paper" onClose={onClose} hideBackdrop>
+const TermsOfServiceDialog = ({classes, open, onClose, theme}) => (
+    <Dialog open={open} scroll="paper" onClose={onClose} hideBackdrop>
         <DialogTitle>Политика конфиденциальности</DialogTitle>
         <DialogContent>
             <Typography variant="h6" color="primary" paragraph>
@@ -160,20 +161,24 @@ const TermsOfServiceDialog = ({classes, onClose, theme}) => (
             </Typography>
         </DialogContent>
         <DialogActions className={classes.dialogActions}>
-            <ColoredButton
+            <Button
                 onClick={onClose}
                 variant="contained"
-                color={theme.palette.common.black}
+                style={{
+                    background:"linear-gradient(90deg, #8A8AF4 0%, #3984DD 100%)",
+                    color: "white"
+                }}
             >
                 <ArrowBackIcon className={classes.backIcon}/>
                 Назад
-            </ColoredButton>
+            </Button>
         </DialogActions>
     </Dialog>
 );
 
 TermsOfServiceDialog.propTypes = {
     classes: PropTypes.object.isRequired,
+    open: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     theme: PropTypes.object.isRequired
 };

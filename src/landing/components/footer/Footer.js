@@ -138,7 +138,7 @@ const Footer = ({classes, theme, width, refFooter}) => {
                 >
                     <Grid item md={2}>
                         <GradientTypography variant="h4">
-                            Hello
+                            LPI
                         </GradientTypography>
                     </Grid>
                     <Grid item md={5}>
